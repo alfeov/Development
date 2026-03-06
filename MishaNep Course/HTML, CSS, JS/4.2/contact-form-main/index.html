@@ -23,12 +23,14 @@
         </label>
         <input
           type="text"
+          name="firtsName"
           id="form__input_first-name"
           class="form__input form__input_text"
           required
         />
         <input
           type="text"
+          name="lastName"
           id="form__input_last-name"
           class="form__input form__input_text"
           required
@@ -38,7 +40,12 @@
       </div>
       <div class="form__email-group">
         <label class="form__label form__label_req"> Email Address </label>
-        <input type="email" class="form__input form__input_text" required />
+        <input
+          type="email"
+          name="email"
+          class="form__input form__input_text"
+          required
+        />
         <p class="errorMessage">This field is required</p>
         <p class="errorMessage">Please enter a valid email address</p>
       </div>
@@ -47,7 +54,7 @@
         <div class="form__query-group">
           <input
             type="radio"
-            name="form__radio"
+            name="queryType"
             id="form__radio_general"
             class="form__radio"
             required
@@ -59,7 +66,7 @@
         <div class="form__query-group">
           <input
             type="radio"
-            name="form__radio"
+            name="queryType"
             id="form__radio_support"
             class="form__radio"
           />
@@ -76,7 +83,6 @@
         <textarea
           id="form__textarea_message"
           class="form__textarea form__input_text"
-          resize="none"
           required
         ></textarea>
         <p class="errorMessage">This field is required</p>
@@ -84,6 +90,7 @@
       <div class="form__agreement-group">
         <input
           type="checkbox"
+          name="agreement"
           id="form__checkbox_agreement"
           class="form__checkbox"
           required

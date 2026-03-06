@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'Karla Bold';
+  font-family: 'Karla';
   src: url('../assets/fonts/static/Karla-Bold.ttf');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Karla Regular';
+  font-family: 'Karla';
   src: url('../assets/fonts/static/Karla-Regular.ttf');
   font-weight: normal;
   font-style: normal;
@@ -24,7 +24,8 @@ body {
   font-size: 1.6rem;
   color: hsl(187, 24%, 22%);
   background-color: hsl(168, 36%, 86%);
-  font-family: 'Karla Regular', sans-serif;
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
   height: 100vh;
   display: flex;
 }
@@ -39,8 +40,8 @@ body {
   border-radius: 1rem;
 }
 .form__title {
-  font-family: 'Karla Bold', sans-serif;
-  /* font-weight: bold; */
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
 }
 
 .form__input_text {
@@ -50,7 +51,8 @@ body {
   outline-color: transparent;
   min-height: 4.5rem;
   padding: 1rem;
-  font-family: 'Karla Regular', sans-serif;
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
   font-size: 1.6rem;
   transition: outline-color 0.15s;
 }
@@ -115,6 +117,11 @@ body {
 
 .form__query-group:hover {
   outline-color: hsl(169, 82%, 27%);
+}
+
+.form__query-group:has(.form__radio:checked) {
+  outline-color: hsl(169, 82%, 27%);
+  background-color: hsla(169, 82%, 27%, 0.08);
 }
 
 .form__radio-label {
@@ -194,7 +201,8 @@ input[type='radio'] {
   padding: 1.7rem 0;
   background-color: hsl(169, 82%, 27%);
   color: #fff;
-  font-family: 'Karla Regular', sans-serif;
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
 }
 
 .form__submit-button:hover {
@@ -247,3 +255,9 @@ input[type='checkbox'] {
 
 /* можно будет потом добавить форме адаптив и сделать корректное отображение ошибок и сообщение об отправке формы */
 /* а еще можно будет сделать корректное отображение radio оболочки через js */
+/* вообще по-хорошему нужно было бы переделать radio group так чтобы input был внутри label и задавать стилизацию именно label, при этом вложить в label 
+какой-нибудь container и стилизовать уже его как custom radio, а не отталкиваться от label::before как это реализовано сейчас. 
+Самая большая проблема в текущем подходе: у radio group UX не очень... Поясню: его "hit-box" имеет padding.
+Дополнительная: не получается нормально стилизовать radio group при radio:checked, необходимо менять стилизацию еще и для custom radio*/
+/* а еще нужно будет немного изменить отображение name-group, лучше будет обернуть first и last в отдельные контейнеры и туда уже вложить error
+т к будет сложно управлять их расположением через grid */
