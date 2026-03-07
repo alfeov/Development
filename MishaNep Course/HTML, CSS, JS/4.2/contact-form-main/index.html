@@ -12,100 +12,121 @@
     ></script>
   </head>
   <body>
-    <form action="#" method="post" class="form">
-      <h1 class="form__title">Contact Us</h1>
-      <div class="form__name-group">
-        <label for="form__input_first-name" class="form__label form__label_req">
-          First Name
-        </label>
-        <label for="form__input_last-name" class="form__label form__label_req">
-          Last Name
-        </label>
-        <input
-          type="text"
-          name="firtsName"
-          id="form__input_first-name"
-          class="form__input form__input_text"
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          id="form__input_last-name"
-          class="form__input form__input_text"
-          required
-        />
-        <p class="errorMessage">This field is required</p>
-        <p class="errorMessage">This field is required</p>
-      </div>
-      <div class="form__email-group">
-        <label class="form__label form__label_req"> Email Address </label>
-        <input
-          type="email"
-          name="email"
-          class="form__input form__input_text"
-          required
-        />
-        <p class="errorMessage">This field is required</p>
-        <p class="errorMessage">Please enter a valid email address</p>
-      </div>
-      <div class="form__queries-group">
-        <p class="form__query-text form__label form__label_req">Query Type</p>
-        <div class="form__query-group">
+    <section class="contact-form-section">
+      <h1 class="contact-form-section__title">Contact Us</h1>
+      <form action="#" method="post" class="form contact-form-section__form">
+        <div class="form__names-group">
+          <div class="form__name-group">
+            <label
+              for="form__input_first-name"
+              class="form__label form__label_req"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              id="form__input_first-name"
+              class="form__input form__input_text"
+              required
+            />
+            <p class="errorMessage">This field is required</p>
+          </div>
+          <div class="form__name-group">
+            <label
+              for="form__input_last-name"
+              class="form__label form__label_req"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              id="form__input_last-name"
+              class="form__input form__input_text"
+              required
+            />
+            <p class="errorMessage">This field is required</p>
+          </div>
+        </div>
+        <div class="form__email-group">
+          <label class="form__label form__label_req"> Email Address </label>
           <input
-            type="radio"
-            name="queryType"
-            id="form__radio_general"
-            class="form__radio"
+            type="email"
+            name="email"
+            class="form__input form__input_text"
             required
           />
-          <label for="form__radio_general" class="form__label form__radio-label"
-            >General Enquiry</label
-          >
+          <p class="errorMessage">This field is required</p>
+          <p class="errorMessage">Please enter a valid email address</p>
         </div>
-        <div class="form__query-group">
+        <div class="form__queries-group">
+          <p class="form__query-text form__label form__label_req">Query Type</p>
+          <label
+            for="form__radio_general"
+            class="form__label form__radio-label"
+          >
+            <input
+              type="radio"
+              name="queryType"
+              id="form__radio_general"
+              class="form__radio"
+              required
+            />
+            <div class="form__custom-radio"></div>
+            General Enquiry
+          </label>
+
+          <label
+            for="form__radio_support"
+            class="form__label form__radio-label"
+          >
+            <input
+              type="radio"
+              name="queryType"
+              id="form__radio_support"
+              class="form__radio"
+            />
+            <div class="form__custom-radio"></div>
+            Support Request
+          </label>
+
+          <p class="errorMessage">Please select a query group</p>
+        </div>
+        <div class="form__message-group">
+          <label
+            for="form__textarea_message"
+            class="form__label form__label_req"
+          >
+            Message
+          </label>
+          <textarea
+            id="form__textarea_message"
+            class="form__textarea form__input_text"
+            required
+          ></textarea>
+          <p class="errorMessage">This field is required</p>
+        </div>
+        <div class="form__agreement-group">
           <input
-            type="radio"
-            name="queryType"
-            id="form__radio_support"
-            class="form__radio"
+            type="checkbox"
+            name="agreement"
+            id="form__checkbox_agreement"
+            class="form__checkbox"
+            required
           />
-          <label for="form__radio_support" class="form__label form__radio-label"
-            >Support Request</label
+          <label
+            for="form__checkbox_agreement"
+            class="form__checkbox-label form__label form__label_req"
           >
+            I consent to being contacted by the team
+          </label>
+          <p class="errorMessage">
+            To submit this form, please consent to being contacted
+          </p>
         </div>
-        <p class="errorMessage">Please select a query group</p>
-      </div>
-      <div class="form__message-group">
-        <label for="form__textarea_message" class="form__label form__label_req">
-          Message
-        </label>
-        <textarea
-          id="form__textarea_message"
-          class="form__textarea form__input_text"
-          required
-        ></textarea>
-        <p class="errorMessage">This field is required</p>
-      </div>
-      <div class="form__agreement-group">
-        <input
-          type="checkbox"
-          name="agreement"
-          id="form__checkbox_agreement"
-          class="form__checkbox"
-          required
-        />
-        <label
-          for="form__checkbox_agreement"
-          class="form__checkbox-label form__label form__label_req"
-        >
-          I consent to being contacted by the team
-        </label>
-        <p class="errorMessage">
-          To submit this form, please consent to being contacted
-        </p>
-      </div>
-      <input type="submit" value="Submit" class="form__submit-button" />
-    </form>
+        <input type="submit" value="Submit" class="form__submit-button" />
+      </form>
+    </section>
   </body>
 </html>

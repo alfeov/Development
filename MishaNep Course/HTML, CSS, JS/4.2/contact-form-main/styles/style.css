@@ -21,27 +21,34 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: hsl(187, 24%, 22%);
   background-color: hsl(168, 36%, 86%);
   font-family: 'Karla', sans-serif;
   font-weight: normal;
   height: 100vh;
   display: flex;
+  align-items: flex-start;
+  padding: 3rem;
 }
 
-.form {
-  margin: auto;
-  background-color: #fff;
+.contact-form-section {
   padding: 3rem;
-  width: 70rem;
-  display: grid;
-  gap: 3rem;
+  margin: auto;
   border-radius: 1rem;
+  background-color: #fff;
+  max-width: 70rem;
+  width: 100%;
 }
-.form__title {
+
+.contact-form-section__title {
   font-family: 'Karla', sans-serif;
   font-weight: bold;
+  margin-bottom: 3rem;
+}
+.form {
+  display: grid;
+  gap: 2rem;
 }
 
 .form__input_text {
@@ -68,11 +75,16 @@ body {
   margin-left: 0.2rem;
 }
 
+.form__names-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 .form__name-group {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content 1fr;
-  grid-auto-rows: max-content;
   gap: 1rem;
 }
 
@@ -95,17 +107,15 @@ body {
   gap: 1rem;
 }
 
+/* queries-group */
+
 .form__queries-group {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-.form__query-text {
-  grid-column: span 2;
-}
-
-.form__query-group {
+.form__radio-label {
   border: 1px solid hsl(186, 15%, 59%);
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -115,11 +125,11 @@ body {
   transition: outline-color 0.15s;
 }
 
-.form__query-group:hover {
+.form__radio-label:hover {
   outline-color: hsl(169, 82%, 27%);
 }
 
-.form__query-group:has(.form__radio:checked) {
+.form__radio-label:has(.form__radio:checked) {
   outline-color: hsl(169, 82%, 27%);
   background-color: hsla(169, 82%, 27%, 0.08);
 }
@@ -138,30 +148,10 @@ input[type='radio'] {
   display: none;
 }
 
-/* .form__radio-label::before {
-  content: '';
-  height: 1.8rem;
-  width: 1.8rem;
-  border-radius: 50%;
-  outline: 1px solid hsl(186, 15%, 59%);
-  display: inline-block;
-  margin-right: 1rem;
-}
+/* custom radio */
 
-.form__radio-label:hover::before {
-  background-color: rgb(243, 243, 243);
-}
-
-.form__radio:checked + .form__radio-label::before {
-  background-image: url('../assets/images/icon-radio-selected.svg');
-  background-repeat: no-repeat;
-  background-size: 1.8rem;
-  outline: none;
-} */
-
-/* custom radio v2 */
-
-.form__radio-label::before {
+.form__custom-radio::before {
+  display: block;
   content: '';
   height: 1.3rem;
   width: 1.3rem;
@@ -173,16 +163,16 @@ input[type='radio'] {
   transition: background-color 0.15s;
 }
 
-.form__radio-label:hover::before {
+.form__radio-label:hover .form__custom-radio::before {
   background-color: hsla(169, 82%, 27%, 0.3);
 }
 
-.form__radio:checked + .form__radio-label::before {
+.form__radio:checked + .form__custom-radio::before {
   background-color: hsla(169, 82%, 27%);
   outline: 2px solid hsla(169, 82%, 27%);
 }
 
-/*  */
+/* message-group */
 
 .form__message-group {
   display: grid;
@@ -194,20 +184,7 @@ input[type='radio'] {
   height: 10rem;
 }
 
-.form__submit-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 1.7rem 0;
-  background-color: hsl(169, 82%, 27%);
-  color: #fff;
-  font-family: 'Karla', sans-serif;
-  font-weight: normal;
-}
-
-.form__submit-button:hover {
-  background-color: rgb(8, 83, 70);
-}
+/* agreement-group */
 
 .form__agreement-group {
   display: grid;
@@ -216,10 +193,9 @@ input[type='radio'] {
 
 .form__checkbox-label {
   cursor: pointer;
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  justify-content: flex-start;
+  display: block;
+  position: relative;
+  padding-left: 3rem;
 }
 
 /* custom checkbox */
@@ -238,10 +214,14 @@ input[type='checkbox'] {
   padding: 0.3rem;
   outline: 1px solid hsl(186, 15%, 59%);
   border-radius: 0.2rem;
-  margin: 0 1rem 0 0.5rem;
+  margin: 0 0.5rem;
   background-color: #fff;
   color: #fff;
   transition: background-color 0.15s;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .form__checkbox-label:hover::before {
@@ -253,11 +233,51 @@ input[type='checkbox'] {
   outline: none;
 }
 
-/* можно будет потом добавить форме адаптив и сделать корректное отображение ошибок и сообщение об отправке формы */
-/* а еще можно будет сделать корректное отображение radio оболочки через js */
-/* вообще по-хорошему нужно было бы переделать radio group так чтобы input был внутри label и задавать стилизацию именно label, при этом вложить в label 
-какой-нибудь container и стилизовать уже его как custom radio, а не отталкиваться от label::before как это реализовано сейчас. 
-Самая большая проблема в текущем подходе: у radio group UX не очень... Поясню: его "hit-box" имеет padding.
-Дополнительная: не получается нормально стилизовать radio group при radio:checked, необходимо менять стилизацию еще и для custom radio*/
-/* а еще нужно будет немного изменить отображение name-group, лучше будет обернуть first и last в отдельные контейнеры и туда уже вложить error
-т к будет сложно управлять их расположением через grid */
+/* submit */
+
+.form__submit-button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.7rem 0;
+  background-color: hsl(169, 82%, 27%);
+  color: #fff;
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
+}
+
+.form__submit-button:hover {
+  background-color: rgb(8, 83, 70);
+}
+
+/* media queries */
+
+@media (min-width: 576px) {
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .form {
+    gap: 3rem;
+  }
+
+  .contact-form-section {
+    margin: auto;
+  }
+
+  .form__names-group {
+    flex-direction: row;
+  }
+
+  .form__queries-group {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form__query-text {
+    grid-column: span 2;
+  }
+}
+
+/* можно будет потом сделать корректное отображение ошибок и сообщение об отправке формы */
