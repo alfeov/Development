@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.divider {
+  height: 50px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: auto;
+}
+
+.ui__title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=uikit.f998b137.css.map */
