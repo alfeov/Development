@@ -1,0 +1,42 @@
+@use './vars' as *;
+
+@mixin h1($color: $whiteColor) {
+  color: $color;
+  font-size: 4rem;
+  line-height: 1.5;
+  @media ($laptop) {
+    font-size: 6rem;
+  }
+}
+
+@mixin h2($color: $primaryColor, $align: center) {
+  color: $color;
+  font-size: 3rem;
+  line-height: 1.2;
+  text-align: $align;
+}
+
+@mixin h3($color: $primaryColor, $align: left) {
+  color: $color;
+  font-size: 2.4rem;
+  line-height: 1.25;
+  text-align: $align;
+}
+
+@mixin p1($color: $textColor) {
+  color: $color;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+@mixin p2($color: $textColor) {
+  color: $color;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+@mixin lead($color: $whiteColor) {
+  color: $color;
+  font-size: 2rem;
+  line-height: 1.8;
+}

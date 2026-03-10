@@ -1,4 +1,9 @@
-@import './reset';
-@import './vars';
-@import './fonts';
-@import './mixins';
+@forward './normalize';
+@forward './vars';
+@forward './fonts';
+@forward './mixins';
+@use './vars' as *;
+
+html {
+  font-family: $primaryFont;
+}
