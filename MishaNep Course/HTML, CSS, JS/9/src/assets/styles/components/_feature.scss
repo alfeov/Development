@@ -1,0 +1,12 @@
+@use '../utils/mixins' as *;
+
+.feature {
+  @include p1();
+  display: flex;
+  &::before {
+    content: url(../images/plus-icon.png);
+    position: relative;
+    top: 0.4rem;
+    margin-right: 0.9rem;
+  }
+}

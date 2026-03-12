@@ -7,3 +7,6 @@
 html {
   font-family: $primaryFont;
 }
+
+// в целом это можно вынести в normalize, если use позволит подключить файл с _
+// ну или в uikit и index соответственно

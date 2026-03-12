@@ -1,0 +1,35 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.screenshot {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  @media ($largePhone) {
+    flex-direction: row;
+  }
+  &__image {
+    width: 80vw;
+    max-width: 35rem;
+    align-self: center;
+    @include img();
+    @media ($largePhone) {
+      width: 20rem;
+    }
+  }
+  &__text {
+    position: relative;
+    top: 0;
+    @media ($largePhone) {
+      top: -0.5rem;
+    }
+  }
+  &__title {
+    @include h3();
+    margin-bottom: 1rem;
+  }
+  &__desc {
+    @include p1();
+    width: 100%;
+  }
+}

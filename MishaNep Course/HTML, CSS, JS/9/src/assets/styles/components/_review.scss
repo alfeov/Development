@@ -1,0 +1,55 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  @media ($largePhone) {
+    flex-direction: row;
+  }
+  &__image {
+    align-self: center;
+    width: 7.5rem;
+    height: 7.5rem;
+    @include img();
+    border-radius: 50%;
+    @media ($largePhone) {
+      align-self: start;
+    }
+  }
+  &__text {
+    background-color: $secondaryGrayColor;
+    border-radius: 1rem;
+    padding: 1.6rem;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%) translateY(-50%) rotate(135deg);
+      border-top: 1rem solid transparent;
+      border-right: 1rem solid transparent;
+      border-bottom: 1rem solid $secondaryGrayColor;
+      border-left: 1rem solid $secondaryGrayColor;
+      @media ($largePhone) {
+        left: 0rem;
+        top: calc(75px / 2);
+        transform: translateX(-50%) translateY(-50%) rotate(-135deg);
+        border-top: 1rem solid $secondaryGrayColor;
+        border-right: 1rem solid $secondaryGrayColor;
+        border-bottom: 1rem solid transparent;
+        border-left: 1rem solid transparent;
+      }
+    }
+  }
+  &__content {
+    @include p2();
+    font-style: italic;
+    margin-bottom: 0.9rem;
+  }
+  &__author {
+    @include p2($authorTextColor);
+  }
+}
