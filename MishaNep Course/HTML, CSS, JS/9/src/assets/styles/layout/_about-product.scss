@@ -1,0 +1,47 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.about-product {
+  @include section($whiteColor);
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    @media ($laptop) {
+      gap: 9rem;
+
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__text {
+    position: relative;
+    top: -0.5rem;
+  }
+
+  &__title {
+    @include h2($align: left);
+    margin-bottom: 2rem;
+  }
+
+  &__desc {
+    @include p1();
+    & + & {
+      margin-top: 2rem;
+    }
+  }
+
+  &__image {
+    @include img();
+    width: 100%;
+    max-width: 43rem;
+
+    @media ($largePhone) {
+      height: 24.6rem;
+    }
+  }
+}

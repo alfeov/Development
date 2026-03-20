@@ -1,0 +1,51 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.stage {
+  @include section();
+  @media ($laptop) {
+    padding-bottom: 2rem;
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    @media ($laptop) {
+      gap: 2rem;
+      flex-shrink: 0;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__image {
+    @include img();
+    width: 100%;
+    max-width: 47rem;
+
+    @media ($largePhone) {
+      height: 21.4rem;
+    }
+  }
+  &__text {
+    @media ($laptop) {
+      position: relative;
+      top: -2.1rem;
+    }
+  }
+  &__title {
+    @include h1();
+    @media ($laptop) {
+      margin-bottom: 1.5rem;
+    }
+  }
+  &__list {
+    padding-left: 3.5rem;
+    &-item {
+      @include lead();
+      list-style: url(../images/check-icon.png);
+    }
+  }
+}

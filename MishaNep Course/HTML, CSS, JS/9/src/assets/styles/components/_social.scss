@@ -1,0 +1,14 @@
+@use '../utils/vars' as *;
+
+.social {
+  &__icon {
+    font-family: 'socialico';
+    font-size: 6rem;
+    line-height: 1;
+    color: $whiteColor;
+    text-decoration: none;
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}

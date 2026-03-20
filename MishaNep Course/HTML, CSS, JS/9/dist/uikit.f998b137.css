@@ -195,6 +195,30 @@ html {
   font-style: normal;
 }
 
+.input, .textarea {
+  color: #445162;
+  background-color: #fff;
+  border: none;
+  border-radius: .5rem;
+  height: 4rem;
+  padding: 1.4rem 1rem;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: #445162;
+}
+
+.input:focus, .textarea:focus {
+  outline: 2px solid #445162;
+}
+
+.textarea {
+  resize: none;
+  height: 17rem;
+}
+
 html {
   font-family: Arial, sans-serif;
 }
@@ -394,6 +418,93 @@ html {
   margin: 0 2rem;
 }
 
+.social__icon {
+  color: #fff;
+  font-family: socialico;
+  font-size: 6rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.social__icon:hover {
+  filter: brightness(.9);
+}
+
+.stage {
+  background-color: #445162;
+}
+
+.stage__wrapper {
+  flex-direction: column;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem;
+  display: flex;
+}
+
+@media (width >= 1024px) {
+  .stage__wrapper {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5rem;
+  }
+}
+
+.stage__image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  max-width: 47rem;
+  margin-bottom: 1rem;
+}
+
+@media (width >= 576px) {
+  .stage__image {
+    height: 21.4rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .stage__text {
+    position: relative;
+    top: -2.1rem;
+  }
+}
+
+.stage__title {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+@media (width >= 1024px) {
+  .stage__title {
+    font-size: 6rem;
+  }
+}
+
+.stage__title {
+  margin-bottom: 1.5rem;
+}
+
+.stage__list {
+  padding: 0;
+}
+
+.stage__list-item {
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.8;
+  list-style: none;
+}
+
+.stage__list-item:before {
+  content: url("check-icon.a8df7563.png");
+}
+
 body {
   background-color: #ccc;
 }
@@ -417,6 +528,7 @@ body {
 .h1 {
   color: #fff;
   font-size: 4rem;
+  font-weight: normal;
   line-height: 1.5;
 }
 
@@ -476,5 +588,10 @@ body {
 
 .btn:hover {
   filter: brightness(.9);
+}
+
+.input-wrapper {
+  gap: 1rem;
+  display: grid;
 }
 /*# sourceMappingURL=uikit.f998b137.css.map */

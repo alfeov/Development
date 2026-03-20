@@ -8,6 +8,7 @@
   padding: 2rem 0;
   display: grid;
   gap: 2rem;
+  flex-shrink: 0;
   &__name {
     @include h3($whiteColor, center);
     line-height: 1;

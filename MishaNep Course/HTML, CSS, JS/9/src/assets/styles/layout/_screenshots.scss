@@ -1,0 +1,17 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.screenshots {
+  @include section($whiteColor);
+  &__title {
+    @include h2();
+    margin-bottom: 3rem;
+  }
+  &__items {
+    display: grid;
+    gap: 3rem 1rem;
+    @media ($laptop) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

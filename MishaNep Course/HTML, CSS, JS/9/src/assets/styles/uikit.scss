@@ -49,3 +49,16 @@ body {
 .btn {
   @include btn();
 }
+
+.input-wrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+.input {
+  @extend %input;
+}
+
+.textarea {
+  @extend %textarea;
+}

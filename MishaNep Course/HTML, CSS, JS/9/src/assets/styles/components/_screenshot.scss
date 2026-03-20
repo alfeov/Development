@@ -9,12 +9,13 @@
     flex-direction: row;
   }
   &__image {
-    width: 80vw;
+    @include img();
+    width: 100%;
     max-width: 35rem;
     align-self: center;
-    @include img();
     @media ($largePhone) {
       width: 20rem;
+      align-self: flex-start;
     }
   }
   &__text {

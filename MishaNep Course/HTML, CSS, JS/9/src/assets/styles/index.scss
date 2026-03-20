@@ -2,4 +2,7 @@
 @use './components' as *;
 @use './layout' as *;
 
-// !
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
