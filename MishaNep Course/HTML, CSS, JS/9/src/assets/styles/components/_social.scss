@@ -1,6 +1,9 @@
 @use '../utils/vars' as *;
 
 .social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   &__icon {
     font-family: 'socialico';
     font-size: 6rem;

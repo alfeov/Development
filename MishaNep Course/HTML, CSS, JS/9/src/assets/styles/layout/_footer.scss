@@ -1,0 +1,68 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.footer {
+  @include section($primaryColor);
+  &__title {
+    @include h2($whiteColor);
+    margin-bottom: 3rem;
+  }
+  &__wrapper {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem 4.5rem;
+    @media ($laptop) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  }
+  &__form {
+    @media ($laptop) {
+      flex-basis: 50rem;
+    }
+  }
+  .contact-form {
+    display: grid;
+    gap: 2rem;
+    &__input {
+      @extend %input;
+    }
+    &__textarea {
+      @extend %textarea;
+    }
+    &__btn {
+      justify-self: center;
+      @include btn();
+    }
+  }
+  &__social {
+    display: grid;
+    justify-items: center;
+    font-style: normal;
+    gap: 2rem;
+    @media ($laptop) {
+      justify-items: left;
+    }
+    &-item {
+      text-decoration: none;
+      display: flex;
+      @include p1($whiteColor);
+    }
+    &-icon {
+      margin-right: 0.5rem;
+    }
+  }
+  &-copyright {
+    &__text {
+      background-color: $primaryGrayColor;
+      color: $primaryColor;
+      font-size: 1.2rem;
+      line-height: 2;
+      padding: 0.2rem;
+      text-align: center;
+    }
+  }
+}
