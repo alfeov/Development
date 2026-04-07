@@ -1,18 +1,16 @@
-function humanReadable(seconds) {
-  if (seconds > 359999) {
-    throw new Error('wrong format')
-  }
-  let date = new Date()
-  // date.setHours()
-  console.log(Math.floor(seconds / 3600)) // hours
-  // date.setMinutes()
-  let minutes = Math.floor(seconds / 60)
-  if (minutes >= 60) minutes = minutes % 60
-  console.log(minutes) // minutes
-  // date.setSeconds()
-  console.log(seconds % 60) // seconds
-  // console.log(date)
-  // return date;
+const humanReadable = (totalSeconds) => {
+  if (totalSeconds > 359999) throw new Error('time is out of border')
+  if (!Number.isInteger(totalSeconds))
+    throw new Error(totalSeconds, "is't an integer")
+  if (totalSeconds < 0) throw new Error("time can't be negative number")
+  let hours = Math.floor(totalSeconds / 3600)
+  let minutes = Math.floor((totalSeconds % 3600) / 60)
+  let seconds = totalSeconds % 60
+  const numToTwoDigitString = (num) => (num < 10 ? '0' + num : num)
+  return [
+    numToTwoDigitString(hours),
+    numToTwoDigitString(minutes),
+    numToTwoDigitString(seconds),
+  ].join(':')
 }
-console.log(humanReadable(7199))
-// console.log(new Date(2000, 0, 21, 3, 3, 1).toLocaleTimeString('it-IT'))
+console.log(humanReadable(90))
