@@ -1,17 +1,19 @@
+// function comp(arr1, arr2) {
+//   if (!Array.isArray(arr1) || !Array.isArray(arr2)) return false
+//   for (let num of arr1) {
+//     let indexOfSquare = arr2.indexOf(Math.pow(num, 2))
+//     if (indexOfSquare === -1) return false
+//     arr2.splice(indexOfSquare, 1)
+//   }
+//   return true
+// }
 function comp(arr1, arr2) {
   if (!Array.isArray(arr1) || !Array.isArray(arr2)) return false
-  // function comparator(arr1, arr2) {
-  //   for (let num of arr1) {
-  //     if (!arr2.includes(Math.sqrt(num)) && !arr2.includes(Math.pow(num, 2))) {
-  //       return false
-  //     }
-  //   }
-  //   return true
-  // }
-  // return comparator(arr1, arr2) && comparator(arr2, arr1)
-  if (arr1.length !== arr2.length) return false
-  for (let num of arr1) {
-    // logic...
-  }
+  let notMutantArr1 = [...arr1].sort((a, b) => a - b)
+  let notMutantArr2 = [...arr2].sort((a, b) => a - b)
+  return notMutantArr1
+    .map((num) => num ** 2)
+    .every((num, index) => num === notMutantArr2[index])
 }
-console.log(comp([2, 2, 3], [4, 9, 9]))
+
+console.log(comp([2, 3, 3], [4, 9, 9]))
