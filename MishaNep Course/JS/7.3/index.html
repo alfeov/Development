@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoveTo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/styles/overlayscrollbars.css"
+      integrity="sha512-DO1BiS5hUKndtUOGESflFVH4R55hT8FFn+XF6kH7T6IluRn3sVNjwuTxop46WCtVsr/Zef+xLdLbwzX76xx+lw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@5/animations/scale-subtle.css"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header id="top">
+      <h1>Hello MoveTo</h1>
+      <div class="actions">
+        <button
+          class="mt-trigger"
+          data-target="#features"
+          data-tippy-content="Scroll to Features"
+        >
+          Features
+        </button>
+        <button
+          class="mt-trigger"
+          data-target="#contacts"
+          data-mt-duration="1600"
+          data-tippy-content="Scroll to Contacts"
+        >
+          Contacts
+        </button>
+      </div>
+    </header>
+
+    <section id="features">
+      <h2>Features</h2>
+    </section>
+
+    <section id="contacts" style="background-color: navajowhite">
+      <div>
+        <h2>Contacts</h2>
+        <button
+          class="mt-trigger"
+          data-target="#top"
+          data-mt-duration="1600"
+          data-tippy-content="Scroll to Top"
+        >
+          Go Top
+        </button>
+      </div>
+    </section>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/browser/overlayscrollbars.browser.es6.min.js"
+      integrity="sha512-2I65iOpxny+0XnjPteljxp5VSTROpTJEuCirTd54pAZV3HUFF5D3cmH8FrDDKw0LZjFpzzeioLMj8mntvT4lVA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moveTo/1.8.2/moveTo.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

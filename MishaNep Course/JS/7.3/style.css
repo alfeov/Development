@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  background-color: mediumorchid;
+  color: white;
+  flex-direction: column;
+}
+section,
+header {
+  padding: 4rem 1rem;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+a,
+button {
+  color: black;
+  background-color: moccasin;
+  border: none;
+  padding: 1rem 1.2rem;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+a:hover,
+button:hover {
+  background-color: navajowhite;
+}
+
+/* ! tooltip styles */
+
+.tippy-tooltip.moccasin-theme {
+  background-color: moccasin;
+  color: black;
+}
+.tippy-tooltip.moccasin-theme[data-placement^='top'] .tippy-arrow {
+  border-top-color: moccasin;
+}
+.tippy-tooltip.moccasin-theme[data-placement^='bottom'] .tippy-arrow {
+  border-bottom-color: moccasin;
+}
+.tippy-tooltip.moccasin-theme[data-placement^='left'] .tippy-arrow {
+  border-left-color: moccasin;
+}
+.tippy-tooltip.moccasin-theme[data-placement^='right'] .tippy-arrow {
+  border-right-color: moccasin;
+}
