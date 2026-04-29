@@ -26,6 +26,7 @@ button {
   color: black;
   background-color: moccasin;
   border: none;
+  border-radius: 0.4rem;
   padding: 1rem 1.2rem;
   text-transform: uppercase;
   outline: none;
@@ -40,6 +41,30 @@ button:hover {
   background-color: navajowhite;
 }
 
+.form {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: right;
+}
+
+/* animation properties */
+.form {
+  overflow: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+input {
+  margin-left: 0.5rem;
+  border: 1px solid rgb(253, 194, 106);
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+
+input:focus {
+  outline: 1px solid black;
+}
 /* ! tooltip styles */
 
 .tippy-tooltip.moccasin-theme {
