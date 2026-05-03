@@ -419,20 +419,6 @@ h3 {
   background-color: #6852ed;
 }
 
-.progress-bar:nth-of-type(1) .progress-bar__fg-bar {
-  width: 96%;
-}
-.progress-bar:nth-of-type(2) .progress-bar__fg-bar {
-  width: 81%;
-}
-.progress-bar:nth-of-type(3) .progress-bar__fg-bar {
-  width: 90%;
-}
-.progress-bar:nth-of-type(4) .progress-bar__fg-bar {
-  width: 88%;
-}
-/* это все желательно через js определять конечно... исходя из содержимого text */
-
 /* banner-section */
 
 .banner-section {
