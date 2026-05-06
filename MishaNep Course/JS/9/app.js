@@ -20,7 +20,7 @@ function initApp() {
       todos.forEach((todo) => renderCreateTodo(todo))
     })
     .catch((error) => {
-      console.error(error.message)
+      showAlert(error)
     })
 }
 
@@ -54,11 +54,11 @@ function handleCloseClick() {
 async function getUsers() {
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/users')
-    if (!response.ok) throw new Error('Fail to fetch data from server')
+    if (!response.ok) throw new Error('HTTP ' + response.status)
     const users = await response.json()
     return users
   } catch (error) {
-    showAlert(error)
+    throw new Error('Users: Network or fetch error: ' + error.message)
   }
 }
 
@@ -67,11 +67,11 @@ async function getTodos() {
     const response = await fetch(
       'https://jsonplaceholder.typicode.com/todos?_limit=20',
     )
-    if (!response.ok) throw new Error('Fail to fetch data from server')
+    if (!response.ok) throw new Error('HTTP ' + response.status)
     const todos = await response.json()
     return todos
   } catch (error) {
-    showAlert(error)
+    throw new Error('Todos: Network or fetch error: ' + error.message)
   }
 }
 
