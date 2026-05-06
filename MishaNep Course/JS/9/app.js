@@ -12,7 +12,16 @@ form.addEventListener('submit', handleSubmit)
 
 // Event Logic
 function initApp() {
-  Promise.all([getUsers(), getTodos()])
+  Promise.all([
+    fetch('https://jsonplaceholder.typicode.com/users'),
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=20'),
+  ])
+    .then((responses) => {
+      for (const response of responses) {
+        if (!response.ok) throw new Error('HTTP ' + response.status)
+      }
+      return Promise.all(responses.map((response) => response.json()))
+    })
     .then((data) => {
       console.log(data)
       ;[users, todos] = data
@@ -51,30 +60,6 @@ function handleCloseClick() {
 }
 
 // Async Logic
-async function getUsers() {
-  try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users')
-    if (!response.ok) throw new Error('HTTP ' + response.status)
-    const users = await response.json()
-    return users
-  } catch (error) {
-    throw new Error('Users: Network or fetch error: ' + error.message)
-  }
-}
-
-async function getTodos() {
-  try {
-    const response = await fetch(
-      'https://jsonplaceholder.typicode.com/todos?_limit=20',
-    )
-    if (!response.ok) throw new Error('HTTP ' + response.status)
-    const todos = await response.json()
-    return todos
-  } catch (error) {
-    throw new Error('Todos: Network or fetch error: ' + error.message)
-  }
-}
-
 async function createTodo(todo) {
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
