@@ -1,0 +1,14 @@
+{
+  "name": "10",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
