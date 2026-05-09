@@ -1,0 +1,125 @@
+@use './utils' as *;
+
+// Colors
+$gray950: hsl(0, 0%, 17%);
+$gray400: hsl(0, 0%, 58%);
+
+// Screen
+$large-phone: 'min-width: 576px';
+$tablet: 'min-width: 767px';
+$laptop: 'min-width: 1023px';
+$desktop: 'min-width: 1440px';
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Rubik';
+  font-weight: normal;
+  font-size: 1.8rem;
+  background-image: url(../images/pattern-bg-mobile.png);
+  background-color: whitesmoke;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media ($tablet) {
+    background-image: url(../images/pattern-bg-desktop.png);
+    background-size: contain;
+  }
+  @media (min-width: 1200px) {
+    background-size: cover;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  &__title {
+    font-size: 3rem;
+    color: white;
+  }
+  @media ($laptop) {
+    padding: 3rem;
+  }
+}
+
+.search-section {
+  display: flex;
+  max-width: 50rem;
+  width: 100%;
+  border-radius: 1.5rem;
+  transition: 0.2s;
+  outline: 1px solid transparent;
+  &_active {
+    outline: 1px solid $gray950;
+  }
+  &:hover {
+    outline: 1px solid $gray950;
+  }
+  &__field {
+    flex-grow: 1;
+    height: 5rem;
+    border-radius: 1.5rem 0 0 1.5rem;
+    border: 1px solid $gray400;
+    outline: none;
+    padding: 1rem 2rem;
+  }
+  &__btn {
+    background-color: black;
+    border: none;
+    background-image: url(../images/icon-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0 3rem;
+    border-radius: 0 1.5rem 1.5rem 0;
+    &:hover {
+      background-color: $gray950;
+    }
+  }
+}
+
+main {
+  padding: 0 2rem;
+  @media ($laptop) {
+    padding: 2rem;
+  }
+}
+
+.info {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  max-width: 110rem;
+  margin: 0 auto;
+  gap: 2rem;
+  @media ($laptop) {
+    flex-direction: row;
+    gap: 0;
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 100%;
+    gap: 1rem;
+    @media ($laptop) {
+      align-items: flex-start;
+    }
+  }
+  &__title {
+    color: $gray400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  &__text {
+    color: $gray950;
+    font-weight: bold;
+  }
+}

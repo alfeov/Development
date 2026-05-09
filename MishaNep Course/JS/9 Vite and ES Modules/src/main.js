@@ -1,5 +1,5 @@
 import './style.css'
-import { initApp, handleSubmit } from './eventLogic'
+import { initApp, handleSubmit } from './helpers'
 
 // Attach Events
 document.addEventListener('DOMContentLoaded', initApp)

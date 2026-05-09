@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IP Address Tracker</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">IP Address Tracker</h1>
+      <form class="search-section">
+        <input
+          type="text"
+          class="search-section__field"
+          placeholder="Search for any IP address of domain"
+        />
+        <input type="submit" class="search-section__btn" value="" />
+      </form>
+    </header>
+    <main>
+      <div class="info">
+        <div class="info__section">
+          <p class="info__title">IP Address</p>
+          <p class="info__text">---</p>
+        </div>
+        <div class="info__section">
+          <p class="info__title">Location</p>
+          <p class="info__text">---</p>
+        </div>
+        <div class="info__section">
+          <p class="info__title">Timezone</p>
+          <p class="info__text">---</p>
+        </div>
+        <div class="info__section">
+          <p class="info__title">ISP</p>
+          <p class="info__text">---</p>
+        </div>
+      </div>
+      <div class="map"></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
