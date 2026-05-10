@@ -7,38 +7,46 @@
     <title>IP Address Tracker</title>
   </head>
   <body>
-    <header class="header">
-      <h1 class="header__title">IP Address Tracker</h1>
-      <form class="search-section">
-        <input
-          type="text"
-          class="search-section__field"
-          placeholder="Search for any IP address of domain"
-        />
-        <input type="submit" class="search-section__btn" value="" />
-      </form>
-    </header>
     <main>
-      <div class="info">
-        <div class="info__section">
-          <p class="info__title">IP Address</p>
-          <p class="info__text">---</p>
-        </div>
-        <div class="info__section">
-          <p class="info__title">Location</p>
-          <p class="info__text">---</p>
-        </div>
-        <div class="info__section">
-          <p class="info__title">Timezone</p>
-          <p class="info__text">---</p>
-        </div>
-        <div class="info__section">
-          <p class="info__title">ISP</p>
-          <p class="info__text">---</p>
+      <div class="finder">
+        <h1 class="finder__title">IP Address Tracker</h1>
+        <form id="searchBar" class="search-bar">
+          <input
+            type="text"
+            class="search-bar__field"
+            name="ip"
+            id="searchField"
+            placeholder="Search for any IP address of domain"
+          />
+          <input
+            type="submit"
+            class="search-bar__btn"
+            value=""
+            id="searchBtn"
+          />
+        </form>
+        <div class="info">
+          <div class="info__section">
+            <p class="info__title">IP Address</p>
+            <p class="info__text" id="ip">---</p>
+          </div>
+          <div class="info__section">
+            <p class="info__title">Location</p>
+            <p class="info__text" id="location">---</p>
+          </div>
+          <div class="info__section">
+            <p class="info__title">Timezone</p>
+            <p class="info__text">UTC: <span id="timezone">---</span></p>
+          </div>
+          <div class="info__section">
+            <p class="info__title">ISP</p>
+            <p class="info__text" id="isp">---</p>
+          </div>
         </div>
       </div>
-      <div class="map"></div>
+      <div id="map"></div>
     </main>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
