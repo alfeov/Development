@@ -1,6 +1,6 @@
 import './assets/styles/style.scss'
 import 'leaflet/dist/leaflet.css'
-import { validateIp, initTileLayer, getCurrentIp } from './assets/helpers'
+import { validateIp, initTileLayer } from './assets/helpers'
 import L from 'leaflet'
 import icon from './assets/images/icon-location.svg'
 
@@ -23,16 +23,43 @@ function renderData(id, location, timezone, isp) {
 }
 
 // Async Logic
-async function initApp() {
-  const ip = await getCurrentIp()
-  getDataByIp(ip)
+let controller
+function getCurrentIp() {
+  if (controller) controller.abort()
+
+  controller = new AbortController()
+
+  fetch('https://api.ipify.org?format=json', { signal: controller.signal })
+    .then((response) => {
+      if (!response.ok) throw new Error('HTTP: ' + response.status)
+      return response.json()
+    })
+    .then((data) => {
+      getDataByIp(data.ip)
+    })
+    .catch((err) => {
+      if (err.name === 'AbortError') {
+        console.log('Request was aborted')
+      } else {
+        alert(err.message)
+        console.error(err)
+      }
+    })
 }
 
-function getDataByIp(userIp) {
+function getDataByIp(inputIp) {
+  if (controller) controller.abort()
+
+  controller = new AbortController()
+
   fetch(
-    `https://geo.ipify.org/api/v2/country,city?apiKey=at_bac9imCYvEqGPhpexyoW1r5jBnagV&ipAddress=${userIp}`,
+    `https://geo.ipify.org/api/v2/country,city?apiKey=at_bac9imCYvEqGPhpexyoW1r5jBnagV&ipAddress=${inputIp}`,
+    { signal: controller.signal },
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error('HTTP: ' + response.status)
+      return response.json()
+    })
     .then(({ ip, location, isp }) => {
       renderData(
         ip,
@@ -43,12 +70,18 @@ function getDataByIp(userIp) {
       setMapView(location.lat, location.lng)
     })
     .catch((err) => {
-      console.error(err.message)
+      if (err.name === 'AbortError') {
+        console.log('Request was aborted')
+      } else {
+        alert(err.message)
+        console.error(err)
+      }
     })
 }
 
 // Event Logic
-document.addEventListener('DOMContentLoaded', initApp)
+document.addEventListener('DOMContentLoaded', getCurrentIp)
+//
 searchField.addEventListener('focus', () => {
   searchBar.classList.remove('search-bar_error')
   searchBar.classList.add('search-bar_active')
@@ -56,13 +89,14 @@ searchField.addEventListener('focus', () => {
 searchField.addEventListener('blur', () => {
   searchBar.classList.remove('search-bar_active')
 })
-
+//
 searchBar.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const userInput = searchField.value.trim()
   if (validateIp(userInput)) {
     getDataByIp(userInput)
+    searchField.value = ''
   } else {
     alert('Empty field or invalid ip')
     searchBar.classList.add('search-bar_error')
