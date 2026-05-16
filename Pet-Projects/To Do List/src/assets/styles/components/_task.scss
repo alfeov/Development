@@ -19,6 +19,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1.6rem;
+    cursor: pointer;
     &:hover {
       background-image: url(../../icons/check.svg);
       background-color: $secondaryColorLighter;
@@ -33,13 +34,17 @@
     line-height: 2rem;
   }
   &__close {
+    background-image: url(../../icons/close.svg);
+    background-repeat: no-repeat;
+    width: 2rem;
+    height: 2rem;
     flex-shrink: 0;
+    cursor: pointer;
   }
 }
 
-// .task_complete {
-//   &__checkbox {
-//   }
-//   &__text {
-//   }
-// }
+.task_complete {
+  &__text {
+    text-decoration: line-through;
+  }
+}
