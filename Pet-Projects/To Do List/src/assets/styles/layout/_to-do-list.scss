@@ -1,0 +1,76 @@
+@use '../utils/vars' as *;
+
+.to-do-list {
+  background-color: $primaryColor;
+  color: $primaryTextColor;
+  margin: auto;
+  padding: 2.4rem;
+  display: grid;
+  gap: 2.4rem;
+  border: 1px solid $borderColor;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 4px -4px rgba(12, 12, 13, 0.05),
+    0 16px 32px -4px rgba(12, 12, 13, 0.1);
+  width: 40.4rem;
+  font-size: 1.6rem;
+  &__title {
+    font-weight: 600;
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  &__add-section {
+    display: flex;
+    gap: 1.6rem;
+    height: 4rem;
+  }
+  &__input {
+    padding: 1.2rem;
+    padding-left: 1.6rem;
+    border: 1px solid $borderColor;
+    border-radius: 0.8rem;
+    flex-grow: 1;
+    height: 4rem;
+    width: 100%;
+  }
+
+  &__add-btn {
+    padding: 0 1.2rem;
+    border-radius: 0.8rem;
+    background-color: $secondaryColor;
+    color: $backgroundColor;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__search-section {
+    position: relative;
+  }
+  &__search-btn {
+    background-color: transparent;
+    border: none;
+    background-image: url(../../icons/search.svg);
+    background-repeat: no-repeat;
+    background-size: 1.6rem;
+    background-position: center;
+    height: 100%;
+    width: 4rem;
+    position: absolute;
+    padding: 0;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  &__action-wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 2.2rem;
+  }
+
+  &__tasks {
+    display: grid;
+    gap: 0.8rem;
+  }
+}

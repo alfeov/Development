@@ -1,0 +1,45 @@
+@use '../utils/vars' as *;
+
+.task {
+  display: flex;
+  gap: 1.2rem;
+  min-height: 4.6rem;
+  border-radius: 0.8rem;
+  border: 1px solid $borderColor;
+  align-items: center;
+  padding: 1.2rem 1rem;
+  &__checkbox {
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: 0.4rem;
+    border: 1px solid $secondaryColor;
+    margin: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1.6rem;
+    &:hover {
+      background-image: url(../../icons/check.svg);
+      background-color: $secondaryColorLighter;
+    }
+    &:checked {
+      background-image: url(../../icons/check.svg);
+      background-color: $secondaryColor;
+    }
+  }
+  &__text {
+    flex-grow: 1;
+    line-height: 2rem;
+  }
+  &__close {
+    flex-shrink: 0;
+  }
+}
+
+// .task_complete {
+//   &__checkbox {
+//   }
+//   &__text {
+//   }
+// }

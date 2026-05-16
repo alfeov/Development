@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to-do-list</title>
+  </head>
+  <body>
+    <main class="to-do-list">
+      <h1 class="to-do-list__title">To Do List</h1>
+      <form id="addForm" class="to-do-list__add-section">
+        <input
+          type="text"
+          class="to-do-list__input to-do-list__add-field"
+          placeholder="New task title"
+        />
+        <input type="submit" class="to-do-list__add-btn" value="Add" />
+      </form>
+      <form id="searchForm" class="to-do-list__search-section">
+        <input
+          class="to-do-list__input to-do-list__search-field"
+          type="search"
+          placeholder="Search task"
+        />
+        <input type="submit" class="to-do-list__search-btn" value="" />
+      </form>
+      <div class="to-do-list__action-wrapper">
+        <p>Total Tasks: <span id="taskCounter"></span></p>
+        <p id="deleteAllBtn">Delete All</p>
+      </div>
+      <ul class="to-do-list__tasks">
+        <li class="task">
+          <input type="checkbox" class="task__checkbox" />
+          <p class="task__text">Some text...</p>
+          <i class="task__close"></i>
+        </li>
+        <li class="task">
+          <input type="checkbox" class="task__checkbox" />
+          <p class="task__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing.
+          </p>
+          <i class="task__close"></i>
+        </li>
+        <li class="task">
+          <input type="checkbox" class="task__checkbox" />
+          <p class="task__text"></p>
+          <i class="task__close"></i>
+        </li>
+      </ul>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

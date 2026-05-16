@@ -1,0 +1,12 @@
+@use 'sass:color';
+
+// vars
+$backgroundColor: #f5f5f5;
+$primaryColor: #ffffff;
+$secondaryColor: #2c2c2c;
+$secondaryColorLighter: color.scale($secondaryColor, $lightness: 20%);
+$primaryTextColor: #000000;
+$secondaryTextColor: #1e1e1e;
+$notActiveTextColor: #757575;
+$backgroundTextColor: #b3b3b3;
+$borderColor: #d9d9d9;

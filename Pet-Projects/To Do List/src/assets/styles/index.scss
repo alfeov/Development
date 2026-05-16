@@ -1,0 +1,13 @@
+@use './utils' as *;
+@use './components' as *;
+@use './layout' as *;
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: $backgroundColor;
+  font-family: 'Inter';
+  display: flex;
+}

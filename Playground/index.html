@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .image-overlay {
+        background-color: orange;
+        margin: 2rem;
+        padding: 5rem;
+      }
+      .image-overlay img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-overlay">
+      <img
+        class="children"
+        src="images/dogs.png"
+        alt="dogs"
+        width="1504"
+        height="541"
+        loading="lazy"
+      />
+    </div>
+    <div style="height: 400vh"></div>
+    <img
+      src="images/sleeping-dogs.png"
+      alt="sleeping-dogs"
+      width="1504"
+      height="541"
+      loading="lazy"
+    />
+  </body>
+</html>
