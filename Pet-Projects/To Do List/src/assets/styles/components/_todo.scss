@@ -26,6 +26,18 @@
     gap: 1.6rem;
     height: 4rem;
     position: relative;
+    &:has(.todo__field:not(:placeholder-shown)) .todo__label {
+      color: $primaryTextColor;
+      transform: scale(0.7) translate(-3.7rem, -5.9rem);
+    }
+  }
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 1.8rem;
+    transform: translateY(-50%);
+    color: $backgroundTextColor;
+    transition: $transitionDuration;
   }
   &__field {
     padding: 1.2rem;
@@ -35,6 +47,16 @@
     flex-grow: 1;
     height: 4rem;
     width: 100%;
+    transition: $transitionDuration;
+    outline: none;
+    &:hover {
+      border-color: $secondaryColor;
+      box-shadow: 0 0 6px $borderColor;
+    }
+    &:focus-visible {
+      border-color: $secondaryColor;
+      box-shadow: 0 0 6px $borderColor;
+    }
   }
 
   &__add-btn {
@@ -44,17 +66,19 @@
     color: $backgroundColor;
     border: none;
     cursor: pointer;
+    transition-duration: $transitionDuration;
     &:hover {
-      background-color: $secondaryColorLighter;
+      opacity: $opacity;
     }
   }
 
   &__search-field {
-    padding-right: 4rem;
+    padding-right: 3.3rem;
   }
   &__search-btn {
-    background-color: transparent;
     border: none;
+    padding: 0;
+    background-color: transparent;
     background-image: url(../../icons/search.svg);
     background-repeat: no-repeat;
     background-size: 1.6rem;
@@ -62,12 +86,12 @@
     height: 100%;
     width: 4rem;
     position: absolute;
-    padding: 0;
     right: 0;
     top: 0;
     cursor: pointer;
+    transition: $transitionDuration;
     &:hover {
-      opacity: 0.7;
+      opacity: $opacity;
     }
   }
 
@@ -82,14 +106,29 @@
     border: none;
     background-color: transparent;
     padding: 0;
+    transition: $transitionDuration;
     &:hover {
-      opacity: 0.7;
+      opacity: $opacity;
       cursor: pointer;
     }
   }
 
   &__list {
     display: grid;
-    gap: 0.8rem;
+    gap: $gridGap;
+  }
+
+  &__empty-message {
+    font-style: italic;
+    color: $backgroundTextColor;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  &__list,
+  &__empty-message {
+    &:empty {
+      display: none;
+    }
   }
 }
