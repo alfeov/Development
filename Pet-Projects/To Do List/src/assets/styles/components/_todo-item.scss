@@ -1,6 +1,6 @@
 @use '../utils/vars' as *;
 
-.task {
+.todo-item {
   display: flex;
   gap: 1.2rem;
   min-height: 4.6rem;
@@ -12,39 +12,54 @@
     appearance: none;
     width: 2rem;
     height: 2rem;
+    position: relative;
     flex-shrink: 0;
     border-radius: 0.4rem;
     border: 1px solid $secondaryColor;
     margin: 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    &:hover {
+    &::after {
+      content: '';
+      width: 1.6rem;
+      height: 1.6rem;
       background-image: url(../../icons/check.svg);
-      background-color: $secondaryColorLighter;
+      background-repeat: no-repeat;
+      position: absolute;
+      transition: transform 300ms;
+      transform: scale(0);
+    }
+    &:hover {
+      filter: drop-shadow(0 0 6px $secondaryColor);
+    }
+    &:checked::after {
+      transform: scale(1);
     }
     &:checked {
-      background-image: url(../../icons/check.svg);
       background-color: $secondaryColor;
     }
   }
   &__text {
     flex-grow: 1;
     line-height: 2rem;
+    cursor: default;
+    padding-right: 4.6rem;
+    &_active {
+      text-decoration: line-through;
+    }
   }
   &__close {
     background-image: url(../../icons/close.svg);
+    background-position: center;
     background-repeat: no-repeat;
     width: 2rem;
     height: 2rem;
     flex-shrink: 0;
     cursor: pointer;
-  }
-}
-
-.task_complete {
-  &__text {
-    text-decoration: line-through;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }

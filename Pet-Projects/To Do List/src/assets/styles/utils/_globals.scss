@@ -1,0 +1,11 @@
+@use './vars' as *;
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: $backgroundColor;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+}

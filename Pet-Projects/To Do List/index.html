@@ -6,47 +6,50 @@
     <title>to-do-list</title>
   </head>
   <body>
-    <main class="to-do-list">
-      <h1 class="to-do-list__title">To Do List</h1>
-      <form id="addForm" class="to-do-list__add-section">
+    <main class="todo">
+      <h1 class="todo__title">To Do List</h1>
+      <form id="addForm" class="todo__form">
         <input
           type="text"
-          class="to-do-list__input to-do-list__add-field"
+          class="todo__field todo__add-field"
           placeholder="New task title"
         />
-        <input type="submit" class="to-do-list__add-btn" value="Add" />
+        <input type="submit" class="todo__add-btn" value="Add" />
       </form>
-      <form id="searchForm" class="to-do-list__search-section">
+      <form id="searchForm" class="todo__form">
         <input
-          class="to-do-list__input to-do-list__search-field"
+          class="todo__field todo__search-field"
           type="search"
           placeholder="Search task"
         />
-        <input type="submit" class="to-do-list__search-btn" value="" />
+        <input type="submit" class="todo__search-btn" value="" />
       </form>
-      <div class="to-do-list__action-wrapper">
+      <div class="todo__info">
         <p>Total Tasks: <span id="taskCounter"></span></p>
-        <p id="deleteAllBtn">Delete All</p>
+        <button class="todo__delete-all-btn" id="deleteAllBtn">
+          Delete All
+        </button>
       </div>
-      <ul class="to-do-list__tasks">
-        <li class="task">
-          <input type="checkbox" class="task__checkbox" />
-          <p class="task__text">Some text...</p>
-          <i class="task__close"></i>
+      <ul class="todo__list">
+        <li class="todo-item">
+          <input type="checkbox" class="todo-item__checkbox" />
+          <p class="todo-item__text">Some text...</p>
+          <i class="todo-item__close"></i>
         </li>
-        <li class="task">
-          <input type="checkbox" class="task__checkbox" />
-          <p class="task__text">
+        <li class="todo-item">
+          <input type="checkbox" class="todo-item__checkbox" />
+          <p class="todo-item__text">
             Lorem ipsum dolor sit amet consectetur adipisicing.
           </p>
-          <i class="task__close"></i>
+          <i class="todo-item__close"></i>
         </li>
-        <li class="task">
-          <input type="checkbox" class="task__checkbox" />
-          <p class="task__text"></p>
-          <i class="task__close"></i>
+        <li class="todo-item">
+          <input type="checkbox" class="todo-item__checkbox" />
+          <p class="todo-item__text"></p>
+          <i class="todo-item__close"></i>
         </li>
       </ul>
+      <p class="todo__empty-message">Empty</p>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>

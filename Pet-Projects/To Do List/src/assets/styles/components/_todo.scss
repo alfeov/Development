@@ -1,6 +1,6 @@
 @use '../utils/vars' as *;
 
-.to-do-list {
+.todo {
   background-color: $primaryColor;
   color: $primaryTextColor;
   margin: auto;
@@ -17,15 +17,17 @@
   &__title {
     font-weight: 600;
     font-size: 2.4rem;
+    line-height: 1.2;
     text-align: center;
   }
 
-  &__add-section {
+  &__form {
     display: flex;
     gap: 1.6rem;
     height: 4rem;
+    position: relative;
   }
-  &__input {
+  &__field {
     padding: 1.2rem;
     padding-left: 1.6rem;
     border: 1px solid $borderColor;
@@ -42,10 +44,13 @@
     color: $backgroundColor;
     border: none;
     cursor: pointer;
+    &:hover {
+      background-color: $secondaryColorLighter;
+    }
   }
 
-  &__search-section {
-    position: relative;
+  &__search-field {
+    padding-right: 4rem;
   }
   &__search-btn {
     background-color: transparent;
@@ -61,15 +66,29 @@
     right: 0;
     top: 0;
     cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
-  &__action-wrapper {
+  &__info {
+    font-weight: 600;
     display: flex;
     justify-content: space-between;
     height: 2.2rem;
   }
 
-  &__tasks {
+  &__delete-all-btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+
+  &__list {
     display: grid;
     gap: 0.8rem;
   }
