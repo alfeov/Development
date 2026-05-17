@@ -36,7 +36,7 @@
     top: 50%;
     left: 1.8rem;
     transform: translateY(-50%);
-    color: $backgroundTextColor;
+    color: $notActiveTextColor2;
     transition: $transitionDuration;
   }
   &__field {
@@ -120,7 +120,7 @@
 
   &__empty-message {
     font-style: italic;
-    color: $backgroundTextColor;
+    color: $notActiveTextColor2;
     text-align: center;
     padding-bottom: 1rem;
   }
