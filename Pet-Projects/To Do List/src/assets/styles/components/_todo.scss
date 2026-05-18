@@ -116,6 +116,9 @@
   &__list {
     display: grid;
     gap: $gridGap;
+    &:empty {
+      display: none;
+    }
   }
 
   &__empty-message {
@@ -123,10 +126,6 @@
     color: $notActiveTextColor2;
     text-align: center;
     padding-bottom: 1rem;
-  }
-
-  &__list,
-  &__empty-message {
     &:empty {
       display: none;
     }

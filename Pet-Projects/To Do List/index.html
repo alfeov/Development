@@ -11,6 +11,7 @@
       <form id="addForm" class="todo__form">
         <input
           id="addField"
+          name="addField"
           class="todo__field todo__add-field"
           type="text"
           placeholder=" "
@@ -34,25 +35,7 @@
           Delete All
         </button>
       </div>
-      <ul class="todo__list">
-        <li class="todo-item">
-          <input type="checkbox" class="todo-item__checkbox" />
-          <p class="todo-item__text">Some text...</p>
-          <button class="todo-item__delete-btn"></button>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" class="todo-item__checkbox" />
-          <p class="todo-item__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing.
-          </p>
-          <button class="todo-item__delete-btn"></button>
-        </li>
-        <li class="todo-item">
-          <input type="checkbox" class="todo-item__checkbox" />
-          <p class="todo-item__text"></p>
-          <button class="todo-item__delete-btn"></button>
-        </li>
-      </ul>
+      <ul id="todoList" class="todo__list"></ul>
       <p class="todo__empty-message"></p>
     </main>
     <script type="module" src="/src/main.js"></script>
