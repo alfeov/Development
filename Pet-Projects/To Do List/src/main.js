@@ -48,27 +48,24 @@ function handleDeleteBtnClick(e) {
   const todo = e.target.parentElement
   const id = todo.dataset.id
   deleteTodo(id)
+
+  // if isSearching update foundTodos array and updateStates to correct info (found/total) tasks
+  if (isSearching) performSearchOrReset(getSearchInput())
 }
 
 function handleDeleteAllBtnClick() {
   deleteAllTodo()
+  if (isSearching) resetSearch()
 }
 
 function handleSearchFieldInput() {
-  const userInput = searchField.value.trim()
-  const hasInput = userInput.length > 0
-
-  if (hasInput) {
-    searchTodo(userInput)
-  } else {
-    resetSearch()
-  }
+  performSearchOrReset(getSearchInput())
 }
 
 function handleSearchFormSubmit(e) {
   e.preventDefault()
 
-  handleSearchFieldInput()
+  performSearchOrReset(getSearchInput())
 }
 
 // Render Logic
@@ -135,13 +132,31 @@ function deleteTodo(id) {
   updateStates()
 }
 
+function deleteAllTodo() {
+  todos = []
+  updateLocalStorage()
+  document.querySelectorAll('.todo-item').forEach(renderDeleteTodo)
+
+  updateStates()
+}
+
+function getSearchInput() {
+  return searchField.value.trim()
+}
+
+function performSearchOrReset(userInput) {
+  const hasContent = userInput.length > 0
+  hasContent ? searchTodo(userInput) : resetSearch()
+}
+
 function searchTodo(userInput) {
   isSearching = true
 
-  const formattedUserInput = userInput.toLowerCase()
-  foundTodos = todos.filter(({ title }) =>
-    title.toLowerCase().includes(formattedUserInput),
-  )
+  const userInputFormatted = userInput.toLowerCase()
+  foundTodos = todos.filter(({ title }) => {
+    const titleFormatted = title.toLowerCase()
+    return titleFormatted.includes(userInputFormatted)
+  })
 
   clearTodoList()
   foundTodos.forEach(renderCreateTodo)
@@ -155,14 +170,6 @@ function resetSearch() {
 
   clearTodoList()
   todos.forEach(renderCreateTodo)
-
-  updateStates()
-}
-
-function deleteAllTodo() {
-  todos = []
-  updateLocalStorage()
-  document.querySelectorAll('.todo-item').forEach(renderDeleteTodo)
 
   updateStates()
 }
