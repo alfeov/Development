@@ -102,6 +102,10 @@
     height: 2.2rem;
   }
 
+  &__counter:empty {
+    display: none;
+  }
+
   &__delete-all-btn {
     border: none;
     background-color: transparent;

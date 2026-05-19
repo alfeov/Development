@@ -2,11 +2,12 @@ import './assets/styles/index.scss'
 
 // Globals
 let todos = JSON.parse(localStorage.getItem('todos')) || []
-let searchedTodos = null
+let foundTodos = []
 let isSearching = false
 const todoList = document.querySelector('#todoList')
 const emptyMessage = document.querySelector('.todo__empty-message')
-const taskCounter = document.querySelector('#taskCounter')
+const todosCounter = document.querySelector('#totalTodosCounter')
+const foundTodosCounter = document.querySelector('#foundTodosCounter')
 const deleteAllBtn = document.querySelector('#deleteAllBtn')
 const searchField = document.querySelector('#searchField')
 const addForm = document.querySelector('#addForm')
@@ -19,12 +20,10 @@ searchForm.addEventListener('submit', handleSearchFormSubmit)
 searchField.addEventListener('input', handleSearchFieldInput)
 deleteAllBtn.addEventListener('click', handleDeleteAllBtnClick)
 
-// Event Logic
+// Event Logic (Handlers)
 function initApp() {
-  if (todos.length) {
-    todos.forEach(renderTodo)
-  }
-  changeTaskCounter()
+  todos.forEach(renderCreateTodo)
+  updateStates()
 }
 
 function handleAddFormSubmit(e) {
@@ -36,7 +35,6 @@ function handleAddFormSubmit(e) {
     createTodo(userInput)
     this.addField.value = ''
     this.addField.focus()
-    changeTaskCounter()
   }
 }
 
@@ -50,14 +48,10 @@ function handleDeleteBtnClick(e) {
   const todo = e.target.parentElement
   const id = todo.dataset.id
   deleteTodo(id)
-  renderDeleteTodo(todo)
-  changeTaskCounter()
 }
 
 function handleDeleteAllBtnClick() {
   deleteAllTodo()
-  document.querySelectorAll('.todo-item').forEach(renderDeleteTodo)
-  changeTaskCounter()
 }
 
 function handleSearchFieldInput() {
@@ -77,8 +71,8 @@ function handleSearchFormSubmit(e) {
   handleSearchFieldInput()
 }
 
-// Basic Logic
-function renderTodo({ id, title, status }) {
+// Render Logic
+function renderCreateTodo({ id, title, status }) {
   const li = document.createElement('li')
   li.className = 'todo-item'
   li.dataset.id = id
@@ -112,6 +106,7 @@ function renderDeleteTodo(todo) {
   todo.remove()
 }
 
+// Basic Logic
 function createTodo(title) {
   const todo = {
     id: crypto?.randomUUID() ?? Date.now().toString(),
@@ -121,7 +116,8 @@ function createTodo(title) {
   todos.push(todo)
   updateLocalStorage()
 
-  renderTodo(todo)
+  renderCreateTodo(todo)
+  updateStates()
 }
 
 function updateTodoStatus(id, status) {
@@ -135,54 +131,73 @@ function updateTodoStatus(id, status) {
 function deleteTodo(id) {
   todos = todos.filter((todo) => todo.id !== id)
   updateLocalStorage()
+  renderDeleteTodo(document.querySelector(`.todo-item[data-id="${id}"]`))
+  updateStates()
 }
 
 function searchTodo(userInput) {
   isSearching = true
 
   const formattedUserInput = userInput.toLowerCase()
-  searchedTodos = todos.filter(({ title }) =>
+  foundTodos = todos.filter(({ title }) =>
     title.toLowerCase().includes(formattedUserInput),
   )
 
   clearTodoList()
+  foundTodos.forEach(renderCreateTodo)
 
-  const hasSearchResults = searchedTodos.length > 0
-  if (hasSearchResults) {
-    changeEmptyMessageContent('')
-    searchedTodos.forEach(renderTodo)
-  } else {
-    changeEmptyMessageContent('Tasks not found')
-  }
+  updateStates()
 }
 
 function resetSearch() {
   isSearching = false
+  foundTodos = []
+
   clearTodoList()
-  todos.forEach(renderTodo)
+  todos.forEach(renderCreateTodo)
+
+  updateStates()
+}
+
+function deleteAllTodo() {
+  todos = []
+  updateLocalStorage()
+  document.querySelectorAll('.todo-item').forEach(renderDeleteTodo)
+
+  updateStates()
 }
 
 function clearTodoList() {
   todoList.innerHTML = ''
 }
 
-function deleteAllTodo() {
-  todos = []
-  updateLocalStorage()
-}
-
 function updateLocalStorage() {
   localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-function changeTaskCounter() {
+// State managers
+function updateStates() {
   const todosLength = todos.length
-  taskCounter.textContent = todosLength
+  const foundTodosLength = foundTodos.length
 
-  const message = todosLength === 0 ? 'There are no tasks yet' : ''
-  changeEmptyMessageContent(message)
+  if (isSearching) {
+    changeCountersState(foundTodosLength + ' /', todosLength)
+
+    const isEmptySearch = foundTodosLength === 0
+    changeEmptyState(isEmptySearch ? 'Tasks not found' : '')
+  } else {
+    changeCountersState('', todosLength)
+
+    const isEmptyTodos = todosLength === 0
+    changeEmptyState(isEmptyTodos ? 'There are no tasks yet' : '')
+  }
 }
 
-function changeEmptyMessageContent(message) {
+function changeCountersState(foundTodosCount, todosCount) {
+  foundTodosCounter.textContent = foundTodosCount
+  todosCounter.textContent = todosCount
+}
+
+function changeEmptyState(message) {
   emptyMessage.textContent = message
 }
