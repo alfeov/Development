@@ -21,3 +21,16 @@ console.log(
     'PHP is the most popular programming language for backend web-development',
   ),
 )
+
+
+// function censor() {
+//     const pairs = []
+//     return (replaceableOrSentence, replacement = null) => {
+//         const hasSecondArgument = replacement !== null
+//         if (hasSecondArgument) return pairs.push([replaceableOrSentence, replacement])
+        
+//         return pairs.reduce((acc, pair) => {
+//             return acc.replaceAll(pair[0], pair[1])
+//         }, replaceableOrSentence)
+//     }
+// }

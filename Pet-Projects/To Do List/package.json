@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
   },
   "devDependencies": {
     "sass": "^1.99.0",
+    "vercel": "^54.2.0",
     "vite": "^8.0.12"
   }
 }
