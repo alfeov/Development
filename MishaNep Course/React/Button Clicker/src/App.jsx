@@ -1,42 +1,24 @@
-import { Component } from 'react'
+import { useState } from 'react'
 
-class App extends Component {
-  state = {
-    count: 0,
+function App() {
+  const [count, setCount] = useState(0)
+
+  const decreaseCount = () => {
+    setCount(count - 1)
   }
 
-  decreaseCount = () => {
-    this.setState({ count: this.state.count - 1 })
+  const increaseCount = () => {
+    setCount(count + 1)
   }
 
-  increaseCount = () => {
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  render() {
-    return (
-      <>
-        <h1>Hello from React</h1>
-        <button
-          onClick={this.decreaseCount}
-          // onClick={() => {
-          //   this.setState({ count: this.state.count - 1 })
-          // }}
-        >
-          Decrease
-        </button>
-        <span style={{ margin: 10 + 'px' }}>{this.state.count}</span>
-        <button
-          onClick={this.increaseCount}
-          // onClick={() => {
-          //   this.setState({ count: this.state.count + 1 })
-          // }}
-        >
-          Increase
-        </button>
-      </>
-    )
-  }
+  return (
+    <>
+      <h1>Hello from React</h1>
+      <button onClick={decreaseCount}>Decrease</button>
+      <span style={{ margin: 10 + 'px' }}>{count}</span>
+      <button onClick={increaseCount}>Increase</button>
+    </>
+  )
 }
 
 export default App
