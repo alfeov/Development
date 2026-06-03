@@ -4,7 +4,7 @@ const localStorageKey = 'count'
 
 export default function Timer() {
   const [count, setCount] = useState(
-    JSON.parse(localStorage.getItem(localStorageKey)) ?? 0,
+    () => JSON.parse(localStorage.getItem(localStorageKey)) ?? 0,
   )
   const [isCounting, setIsCounting] = useState(false)
 
