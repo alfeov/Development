@@ -1,30 +1,33 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { Suspense } from 'react'
+import { Await, useAsyncValue, useLoaderData, useParams } from 'react-router'
 
 export function Singlepage() {
+  const { post } = useLoaderData()
   const params = useParams()
-  const [post, setPost] = useState(null)
-
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
-      .then((response) => response.json())
-      .then(setPost)
-  }, [params])
 
   return (
     <>
       <h1>Post #{params.postId}</h1>
-      {post && (
-        <>
-          <p>id: {post.id}</p>
-          <p>
-            <strong>{post.title}</strong>
-          </p>
-          <p>
-            <em>{post.body}</em>
-          </p>
-        </>
-      )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Await resolve={post}>
+          <Post />
+        </Await>
+      </Suspense>
+    </>
+  )
+}
+
+function Post() {
+  const resolvedPost = useAsyncValue()
+  return (
+    <>
+      <p>id: {resolvedPost.id}</p>
+      <p>
+        <strong>{resolvedPost.title}</strong>
+      </p>
+      <p>
+        <em>{resolvedPost.body}</em>
+      </p>
     </>
   )
 }

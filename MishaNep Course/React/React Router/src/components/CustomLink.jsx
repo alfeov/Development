@@ -1,16 +1,12 @@
 import { Link, useMatch } from 'react-router'
 
 const CustomLink = ({ children, to, ...props }) => {
-  const match = useMatch(to)
-
+  const match = useMatch({
+    path: to,
+    end: to === '/',
+  })
   return (
-    <Link
-      to={to}
-      style={{
-        color: match ? 'var(--color-active)' : 'white',
-      }}
-      {...props}
-    >
+    <Link to={to} className={match ? 'active' : null} {...props}>
       {children}
     </Link>
   )

@@ -1,4 +1,10 @@
-import { Routes, Route, Navigate } from 'react-router'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Navigate,
+  createRoutesFromElements,
+} from 'react-router'
 
 import { AuthProvider } from './ContextProvider'
 
@@ -14,29 +20,40 @@ import { RequireAuth } from './hoc/RequireAuth'
 
 import { Layout } from './components/Layout'
 
+import { postsLoader } from './helpers/postsLoader'
+import { postLoader } from './helpers/postLoader'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route index element={<Homepage />} />
+      <Route path='about' element={<About />} />
+      <Route path='about-us' element={<Navigate to='/about' replace />} />
+      <Route path='posts' loader={postsLoader} element={<Blogpage />} />
+      <Route
+        path='posts/:postId'
+        loader={postLoader}
+        element={<Singlepage />}
+      />
+      <Route
+        path='posts/new'
+        element={
+          <RequireAuth>
+            <Createpost />
+          </RequireAuth>
+        }
+      />
+      <Route path='login' element={<Loginpage />} />
+      <Route path='*' element={<Notfoundpage />} />
+    </Route>,
+  ),
+)
+
 function App() {
   return (
     <>
       <AuthProvider>
-        <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Homepage />} />
-            <Route path='about' element={<About />} />
-            <Route path='about-us' element={<Navigate to='/about' replace />} />
-            <Route path='posts' element={<Blogpage />} />
-            <Route path='posts/:postId' element={<Singlepage />} />
-            <Route
-              path='posts/new'
-              element={
-                <RequireAuth>
-                  <Createpost />
-                </RequireAuth>
-              }
-            />
-            <Route path='login' element={<Loginpage />} />
-            <Route path='*' element={<Notfoundpage />} />
-          </Route>
-        </Routes>
+        <RouterProvider router={router} />
       </AuthProvider>
     </>
   )
