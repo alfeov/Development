@@ -1,0 +1,34 @@
+import { Link, NavLink, Outlet } from 'react-router'
+import styles from './Layout.module.scss'
+
+function Layout() {
+  return (
+    <>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div>
+            <Link to='/' className={styles.logoLink}>
+              Recipe Vault
+            </Link>
+          </div>
+          <nav className={styles.navLinks}>
+            <NavLink to='/' className={styles.navLink}>
+              Home
+            </NavLink>
+            <NavLink to='/about' className={styles.navLink}>
+              About
+            </NavLink>
+            <NavLink to='/contact' className={styles.navLink}>
+              Contact
+            </NavLink>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <Outlet />
+      </main>
+    </>
+  )
+}
+
+export default Layout

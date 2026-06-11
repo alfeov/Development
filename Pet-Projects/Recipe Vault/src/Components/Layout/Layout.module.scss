@@ -1,0 +1,34 @@
+@use '@/styles/utils' as *;
+
+.header {
+  box-shadow: var(--box-shadow);
+  width: 100%;
+}
+
+.container {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include container;
+}
+
+.logoLink {
+  font-size: 3rem;
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLink {
+  font-size: 2.4rem;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
