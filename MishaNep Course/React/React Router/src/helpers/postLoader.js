@@ -5,7 +5,7 @@ export async function getPost(postId) {
     )
     if (!res.ok) {
       if (res.status === 404) {
-        throw new Error('Page not found')
+        throw new Error(`Post with id: ${postId} not found`)
       } else {
         throw new Error('HTTP: ' + res.status)
       }
@@ -25,7 +25,7 @@ export async function getComments(postId) {
     )
     if (!res.ok) {
       if (res.status === 404) {
-        throw new Error('Page not found')
+        throw new Error(`Comments for userId: ${postId} not found`)
       } else {
         throw new Error('HTTP: ' + res.status)
       }
@@ -35,5 +35,11 @@ export async function getComments(postId) {
     throw new Error('Something went wrong: ' + error.message, {
       cause: error,
     })
+  }
+}
+
+export async function postLoader({ params }) {
+  return {
+    post: getPost(params.postId),
   }
 }

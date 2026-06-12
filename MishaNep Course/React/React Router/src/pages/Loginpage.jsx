@@ -6,12 +6,16 @@ export function Loginpage() {
   const location = useLocation()
   const { signin } = useAuth()
 
-  const fromPage = location.state?.from?.pathname || '/'
+  const fromPage = location.state?.from || '/'
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(location)
-    signin(e.target.login.value, () => navigate(fromPage, { replace: true }))
+    signin(e.target.login.value, () =>
+      navigate(fromPage, {
+        replace: true,
+        state: { ...location.state },
+      }),
+    )
   }
 
   return (

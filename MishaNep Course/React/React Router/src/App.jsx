@@ -12,6 +12,10 @@ import { RequireAuth } from './hoc/RequireAuth'
 
 import { Layout } from './components/Layout'
 
+import { createPostAction } from './helpers/createPostAction'
+import { editPostAction } from './helpers/editPostAction'
+import { postLoader } from './helpers/postLoader'
+
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
 import { Blogpage } from './pages/Blogpage'
@@ -20,6 +24,7 @@ import { Notfoundpage } from './pages/Notfoundpage'
 import { Createpost } from './pages/Createpost'
 import { Errorpage } from './pages/Errorpage'
 import { Loginpage } from './pages/Loginpage'
+import { Editpost } from './pages/Editpost'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,9 +40,20 @@ const router = createBrowserRouter(
       />
       <Route
         path='posts/new'
+        action={createPostAction}
         element={
           <RequireAuth>
             <Createpost />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path='posts/:postId/edit'
+        loader={postLoader}
+        action={editPostAction}
+        element={
+          <RequireAuth>
+            <Editpost />
           </RequireAuth>
         }
       />

@@ -1,5 +1,5 @@
 import { Suspense, use } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { getPost, getComments } from '../helpers/postLoader'
 
 export function Singlepage() {
@@ -21,6 +21,12 @@ export function Singlepage() {
 
 function Post({ postPromise }) {
   const post = use(postPromise)
+  const navigate = useNavigate()
+
+  function handleClick() {
+    navigate('edit', { replace: true, state: { post: post } })
+  }
+
   return (
     <>
       <p>id: {post.id}</p>
@@ -30,6 +36,7 @@ function Post({ postPromise }) {
       <p>
         <em>{post.body}</em>
       </p>
+      <button onClick={handleClick}>Edit this post</button>
     </>
   )
 }
