@@ -1,15 +1,9 @@
-// import { use } from 'react'
-import { Suspense } from 'react'
-import {
-  Await,
-  Link,
-  useLoaderData,
-  useSearchParams,
-  useAsyncValue,
-} from 'react-router'
+import { Suspense, use } from 'react'
+import { Link, useSearchParams } from 'react-router'
+
+import { getPosts } from '../helpers/postsLoader'
 
 const Blogpage = () => {
-  const { posts } = useLoaderData()
   const [searchParams, setSearchParams] = useSearchParams()
 
   const titleParam = searchParams.get('title') ?? ''
@@ -31,20 +25,18 @@ const Blogpage = () => {
           <Link to='new'>Create new post</Link>
         </li>
         <Suspense fallback={<div>Loading...</div>}>
-          <Await resolve={posts}>
-            <Posts titleParam={titleParam} />
-          </Await>
+          <Posts titleParam={titleParam} postsPromise={getPosts()} />
         </Suspense>
       </ul>
     </div>
   )
 }
 
-function Posts({ titleParam = '' }) {
-  const resolvedPosts = useAsyncValue()
+function Posts({ titleParam = '', postsPromise }) {
+  const posts = use(postsPromise)
   return (
     <>
-      {resolvedPosts
+      {posts
         .filter((post) => post.title.includes(titleParam))
         .map((post) => {
           return (

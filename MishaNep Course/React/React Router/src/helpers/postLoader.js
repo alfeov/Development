@@ -1,21 +1,20 @@
-async function getPost(postId) {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${postId}`,
-  )
-  return res.json()
+export async function getPost(postId) {
+  try {
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`,
+    )
+    if (!res.ok) throw new Error('HTTP: ' + res.status)
+    return res.json()
+  } catch (error) {
+    throw new Error('Something went wrong ' + error.message, {
+      cause: error,
+    })
+  }
 }
 
-async function getComments(postId) {
+export async function getComments(postId) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${postId}/comments`,
   )
   return res.json()
-}
-
-export function postLoader({ params }) {
-  const postId = params.postId
-  return {
-    post: getPost(postId),
-    comments: getComments(postId),
-  }
 }

@@ -1,33 +1,46 @@
-import { Suspense } from 'react'
-import { Await, useAsyncValue, useLoaderData, useParams } from 'react-router'
+import { Suspense, use } from 'react'
+import { useParams } from 'react-router'
+import { getPost, getComments } from '../helpers/postLoader'
 
 export function Singlepage() {
-  const { post } = useLoaderData()
   const params = useParams()
 
   return (
     <>
       <h1>Post #{params.postId}</h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <Await resolve={post}>
-          <Post />
-        </Await>
+        <Post postPromise={getPost(params.postId)} />
+      </Suspense>
+      <h2>Comments:</h2>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Comments commentsPromise={getComments(params.postId)} />
       </Suspense>
     </>
   )
 }
 
-function Post() {
-  const resolvedPost = useAsyncValue()
+function Post({ postPromise }) {
+  const post = use(postPromise)
   return (
     <>
-      <p>id: {resolvedPost.id}</p>
+      <p>id: {post.id}</p>
       <p>
-        <strong>{resolvedPost.title}</strong>
+        <strong>{post.title}</strong>
       </p>
       <p>
-        <em>{resolvedPost.body}</em>
+        <em>{post.body}</em>
       </p>
     </>
+  )
+}
+
+function Comments({ commentsPromise }) {
+  const comments = use(commentsPromise)
+  return (
+    <ul>
+      {comments.map((comment) => (
+        <li key={comment.id}>{comment.body}</li>
+      ))}
+    </ul>
   )
 }
