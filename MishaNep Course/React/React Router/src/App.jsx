@@ -18,6 +18,7 @@ import { Blogpage } from './pages/Blogpage'
 import { Singlepage } from './pages/Singlepage'
 import { Notfoundpage } from './pages/Notfoundpage'
 import { Createpost } from './pages/Createpost'
+import { Errorpage } from './pages/Errorpage'
 import { Loginpage } from './pages/Loginpage'
 
 const router = createBrowserRouter(
@@ -27,7 +28,11 @@ const router = createBrowserRouter(
       <Route path='about' element={<About />} />
       <Route path='about-us' element={<Navigate to='/about' replace />} />
       <Route path='posts' element={<Blogpage />} />
-      <Route path='posts/:postId' element={<Singlepage />} />
+      <Route
+        path='posts/:postId'
+        element={<Singlepage />}
+        errorElement={<Errorpage />}
+      />
       <Route
         path='posts/new'
         element={

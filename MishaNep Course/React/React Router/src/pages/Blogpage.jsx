@@ -22,6 +22,7 @@ const Blogpage = () => {
       </form>
       <ul>
         <li>
+          {/* <ReactComponent className='plus' /> */}
           <Link to='new'>Create new post</Link>
         </li>
         <Suspense fallback={<div>Loading...</div>}>
