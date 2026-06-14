@@ -4,10 +4,20 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--primary-text-color);
 }
 
 .active {
   text-decoration: underline;
+}
+
+.active-form {
+  box-shadow: var(--box-shadow);
+}
+
+.loader {
+  margin: 5rem auto;
+  width: fit-content;
+  color: var(--primary-color);
 }

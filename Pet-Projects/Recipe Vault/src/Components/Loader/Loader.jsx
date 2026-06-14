@@ -6,7 +6,7 @@ export function Loader() {
       visible={true}
       height='80'
       width='80'
-      color='#000000'
+      color='currentColor'
       ariaLabel='tail-spin-loading'
       radius='1'
       wrapperStyle={{}}

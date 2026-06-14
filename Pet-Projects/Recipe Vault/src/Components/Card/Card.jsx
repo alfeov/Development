@@ -3,7 +3,7 @@ import { useState } from 'react'
 import noImage from '@/assets/images/no-image.png'
 import styles from './Card.module.scss'
 
-export function Card({ id, title, image, desc, buttonText }) {
+export function Card({ id, title, image, desc, buttonText, onClick }) {
   const [imgLoading, setImgLoading] = useState(true)
 
   const handleLoad = () => {
@@ -33,7 +33,12 @@ export function Card({ id, title, image, desc, buttonText }) {
         <ul className={styles.info}>
           <li>{desc}</li>
         </ul>
-        <button className={styles.button} onClick={() => {}}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            onClick({ title, id })
+          }}
+        >
           Go to {buttonText}
         </button>
       </footer>

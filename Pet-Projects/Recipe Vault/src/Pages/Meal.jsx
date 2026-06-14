@@ -1,12 +1,11 @@
 import { Suspense } from 'react'
 import { Await, useLoaderData } from 'react-router'
 
-import { Loader } from '@/components/Loader/Loader'
-import { Categories } from '@/Components/Categories/Categories'
+import { Loader } from '@/Components/Loader/Loader'
+import { Meal as MealComponent } from '@/Components/Meal/Meal'
 
-export function Home() {
-  const { categories } = useLoaderData()
-
+export function Meal() {
+  const { meal } = useLoaderData()
   return (
     <Suspense
       fallback={
@@ -15,8 +14,8 @@ export function Home() {
         </div>
       }
     >
-      <Await resolve={categories}>
-        <Categories />
+      <Await resolve={meal}>
+        <MealComponent />
       </Await>
     </Suspense>
   )

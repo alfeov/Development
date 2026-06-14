@@ -20,8 +20,11 @@
 }
 
 .navLinks {
-  display: flex;
-  gap: 2rem;
+  display: none;
+  @media ($tablet) {
+    display: flex;
+    gap: 2rem;
+  }
 }
 
 .navLink {
@@ -31,5 +34,4 @@
 .main {
   padding: 4rem;
   min-height: calc(100vh - 8rem);
-  display: flex;
 }
