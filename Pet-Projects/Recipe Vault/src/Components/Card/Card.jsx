@@ -1,0 +1,42 @@
+import { Loader } from '@/components/Loader/Loader'
+import { useState } from 'react'
+import noImage from '@/assets/images/no-image.png'
+import styles from './Card.module.scss'
+
+export function Card({ id, title, image, desc, buttonText }) {
+  const [imgLoading, setImgLoading] = useState(true)
+
+  const handleLoad = () => {
+    setImgLoading(false)
+  }
+
+  return (
+    <article className={styles.card}>
+      <div className={styles.imgWrapper}>
+        {imgLoading && (
+          <div className={styles.imgLoader}>
+            <Loader />
+          </div>
+        )}
+        <img
+          className={styles.img}
+          style={{
+            opacity: imgLoading ? '0' : '1',
+          }}
+          src={image ?? noImage}
+          alt={title}
+          onLoad={handleLoad}
+        />
+      </div>
+      <footer className={styles.footer}>
+        <p className={styles.title}>{title}</p>
+        <ul className={styles.info}>
+          <li>{desc}</li>
+        </ul>
+        <button className={styles.button} onClick={() => {}}>
+          Go to {buttonText}
+        </button>
+      </footer>
+    </article>
+  )
+}

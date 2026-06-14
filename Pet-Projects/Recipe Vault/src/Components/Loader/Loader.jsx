@@ -1,6 +1,6 @@
 import { TailSpin } from 'react-loader-spinner'
 
-export default function Loader() {
+export function Loader() {
   return (
     <TailSpin
       visible={true}

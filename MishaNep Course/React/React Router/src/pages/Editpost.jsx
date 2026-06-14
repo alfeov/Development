@@ -11,6 +11,7 @@ import { Suspense } from 'react'
 export function Editpost() {
   const { post } = useLoaderData()
   const params = useParams()
+  console.log(post)
 
   return (
     <>

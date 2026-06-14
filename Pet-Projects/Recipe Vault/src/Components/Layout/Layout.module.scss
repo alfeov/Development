@@ -3,6 +3,8 @@
 .header {
   box-shadow: var(--box-shadow);
   width: 100%;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
 }
 
 .container {
@@ -14,9 +16,7 @@
 }
 
 .logoLink {
-  font-size: 3rem;
-  text-decoration: none;
-  color: var(--primary-text-color);
+  @include link(3rem, false);
 }
 
 .navLinks {
@@ -25,10 +25,11 @@
 }
 
 .navLink {
-  font-size: 2.4rem;
-  color: var(--primary-text-color);
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+  @include link(2.4rem);
+}
+
+.main {
+  padding: 4rem;
+  min-height: calc(100vh - 8rem);
+  display: flex;
 }

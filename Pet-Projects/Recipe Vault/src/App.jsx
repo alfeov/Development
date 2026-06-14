@@ -1,25 +1,40 @@
-import Layout from '@/Components/Layout/Layout'
-import { Home } from '@/Components/Home'
-import { About } from '@/Components/About'
-import { Contact } from '@/Components/Contact'
-import { Notfound } from '@/Components/Notfound'
-import { BrowserRouter as Router, Routes, Route } from 'react-router'
+import { Layout } from '@/Components/Layout/Layout'
+import { Home } from '@/Pages/Home'
+import { About } from '@/Pages/About'
+import { Contact } from '@/Pages/Contact'
+import { Notfound } from '@/Pages/Notfound'
+import { createBrowserRouter } from 'react-router'
+import { RouterProvider } from 'react-router'
+import { categoriesLoader } from '@/loaders/categoriesLoader'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: Layout,
+    children: [
+      {
+        index: true,
+        loader: categoriesLoader,
+        Component: Home,
+      },
+      {
+        path: 'about',
+        Component: About,
+      },
+      {
+        path: 'contact',
+        Component: Contact,
+      },
+      {
+        path: '*',
+        Component: Notfound,
+      },
+    ],
+  },
+])
 
 function App() {
-  return (
-    <>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path='about' element={<About />} />
-            <Route path='contact' element={<Contact />} />
-            <Route path='*' element={<Notfound />} />
-          </Route>
-        </Routes>
-      </Router>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

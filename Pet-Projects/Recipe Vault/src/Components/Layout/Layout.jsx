@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet } from 'react-router'
 import styles from './Layout.module.scss'
 
-function Layout() {
+export function Layout() {
   return (
     <>
       <header className={styles.header}>
@@ -24,11 +24,9 @@ function Layout() {
           </nav>
         </div>
       </header>
-      <main>
+      <main className={styles.main}>
         <Outlet />
       </main>
     </>
   )
 }
-
-export default Layout
