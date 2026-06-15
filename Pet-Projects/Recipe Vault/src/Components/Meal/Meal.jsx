@@ -4,9 +4,9 @@ import styles from './Meal.module.scss'
 export function Meal() {
   const meal = useAsyncValue()
   const navigate = useNavigate()
+  const recipe = meal.meals[0]
 
   const {
-    idMeal: id,
     strMeal: title,
     strCategory,
     strArea,
@@ -15,27 +15,7 @@ export function Meal() {
     strInstructions,
     strMealThumb: image,
     strYoutube,
-    strIngredient1,
-    strIngredient2,
-    strIngredient3,
-    strIngredient4,
-    strIngredient5,
-    strIngredient6,
-    strIngredient7,
-    strIngredient8,
-    strIngredient9,
-    strIngredient10,
-    strMeasure1,
-    strMeasure2,
-    strMeasure3,
-    strMeasure4,
-    strMeasure5,
-    strMeasure6,
-    strMeasure7,
-    strMeasure8,
-    strMeasure9,
-    strMeasure10,
-  } = meal?.meals?.[0] || {}
+  } = recipe
 
   function goToCategory() {
     navigate(`/Category/${strCategory}`)
@@ -65,76 +45,37 @@ export function Meal() {
       </div>
       <div>
         <h2>Ingredients</h2>
-        <div className={styles.ingredients}>
-          <p>
-            <strong>Ingredients</strong>
-          </p>
-          <p>
-            <strong>Measure</strong>
-          </p>
-          {strIngredient1 && (
-            <>
-              <p>{strIngredient1}</p>
-              <p>{strMeasure1}</p>
-            </>
-          )}
-          {strIngredient2 && (
-            <>
-              <p>{strIngredient2}</p>
-              <p>{strMeasure2}</p>
-            </>
-          )}
-          {strIngredient3 && (
-            <>
-              <p>{strIngredient3}</p>
-              <p>{strMeasure3}</p>
-            </>
-          )}
-          {strIngredient4 && (
-            <>
-              <p>{strIngredient4}</p>
-              <p>{strMeasure4}</p>
-            </>
-          )}
-          {strIngredient5 && (
-            <>
-              <p>{strIngredient5}</p>
-              <p>{strMeasure5}</p>
-            </>
-          )}
-          {strIngredient6 && (
-            <>
-              <p>{strIngredient6}</p>
-              <p>{strMeasure6}</p>
-            </>
-          )}
-          {strIngredient7 && (
-            <>
-              <p>{strIngredient7}</p>
-              <p>{strMeasure7}</p>
-            </>
-          )}
-          {strIngredient8 && (
-            <>
-              <p>{strIngredient8}</p>
-              <p>{strMeasure8}</p>
-            </>
-          )}
-          {strIngredient9 && (
-            <>
-              <p>{strIngredient9}</p>
-              <p>{strMeasure9}</p>
-            </>
-          )}
-          {strIngredient10 && (
-            <>
-              <p>{strIngredient10}</p>
-              <p>{strMeasure10}</p>
-            </>
-          )}
+        <div className={styles.table}>
+          <div className={styles.table__row}>
+            <p>
+              <strong>Ingredients</strong>
+            </p>
+            <p>
+              <strong>Measure</strong>
+            </p>
+          </div>
+          {Object.keys(recipe).map((key, index) => {
+            if (key.includes('strIngredient') && recipe[key])
+              return (
+                <div className={styles.table__row} key={index}>
+                  <p>{recipe[key]}</p>
+                  <p>{recipe[`strMeasure${key.slice(13)}`]}</p>
+                </div>
+              )
+          })}
         </div>
       </div>
-      {/* <iframe title={id} src={strYoutube}></iframe> */}
+
+      {strYoutube && (
+        <div className={styles.iframeContainer}>
+          <iframe
+            title='YouTube video player'
+            src={'https://www.youtube.com/embed/' + strYoutube.slice(-11)}
+            allowFullScreen
+            referrerPolicy='strict-origin-when-cross-origin'
+          ></iframe>
+        </div>
+      )}
     </div>
   )
 }

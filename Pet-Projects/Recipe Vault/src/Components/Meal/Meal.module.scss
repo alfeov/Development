@@ -27,10 +27,13 @@ h2 {
   }
 }
 
-.ingredients {
+.table {
   display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 0.8rem;
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 .button {
@@ -38,4 +41,12 @@ h2 {
   max-width: 40rem;
   width: 100%;
   margin: 0 auto;
+}
+
+.iframeContainer {
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
 }

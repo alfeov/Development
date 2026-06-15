@@ -15,12 +15,6 @@ export function Layout() {
             <NavLink to='/' className={styles.navLink}>
               Home
             </NavLink>
-            <NavLink to='/about' className={styles.navLink}>
-              About
-            </NavLink>
-            <NavLink to='/contact' className={styles.navLink}>
-              Contact
-            </NavLink>
           </nav>
         </div>
       </header>

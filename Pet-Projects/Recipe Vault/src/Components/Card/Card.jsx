@@ -17,11 +17,12 @@ export function Card({ id, title, image, desc, buttonText, onClick }) {
         <img
           className={styles.img}
           style={{
-            display: imgLoading ? 'none' : 'block',
+            width: imgLoading ? '0' : '100%',
             opacity: imgLoading ? '0' : '1',
           }}
           src={image ?? noImage}
           alt={title}
+          loading='lazy'
           onLoad={handleLoad}
         />
       </div>
