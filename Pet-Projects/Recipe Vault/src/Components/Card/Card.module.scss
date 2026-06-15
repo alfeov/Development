@@ -13,17 +13,10 @@
 }
 
 .imgWrapper {
-  position: relative;
+  display: flex;
   width: 100%;
   aspect-ratio: 1/1;
   color: var(--primary-color);
-}
-
-.imgLoader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .img {

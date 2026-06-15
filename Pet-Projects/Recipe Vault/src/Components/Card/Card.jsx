@@ -13,14 +13,11 @@ export function Card({ id, title, image, desc, buttonText, onClick }) {
   return (
     <article className={styles.card}>
       <div className={styles.imgWrapper}>
-        {imgLoading && (
-          <div className={styles.imgLoader}>
-            <Loader />
-          </div>
-        )}
+        {imgLoading && <Loader margin='auto' />}
         <img
           className={styles.img}
           style={{
+            display: imgLoading ? 'none' : 'block',
             opacity: imgLoading ? '0' : '1',
           }}
           src={image ?? noImage}

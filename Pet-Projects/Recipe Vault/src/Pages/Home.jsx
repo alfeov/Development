@@ -8,13 +8,7 @@ export function Home() {
   const { categories } = useLoaderData()
 
   return (
-    <Suspense
-      fallback={
-        <div className='loader'>
-          <Loader />
-        </div>
-      }
-    >
+    <Suspense fallback={<Loader margin='5rem auto' />}>
       <Await resolve={categories}>
         <Categories />
       </Await>

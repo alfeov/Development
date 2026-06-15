@@ -9,6 +9,8 @@ import { Notfound } from '@/Pages/Notfound'
 import { Category } from '@/Pages/Category'
 import { Meal } from '@/Pages/Meal'
 
+import { ErrorBoundary } from './Components/ErrorBoundary/ErrorBoundary'
+
 import { categoriesLoader } from '@/loaders/categoriesLoader'
 import { categoryLoader } from '@/loaders/categoryLoader'
 import { mealLoader } from '@/loaders/mealLoader'
@@ -21,16 +23,19 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: categoriesLoader,
+        ErrorBoundary: ErrorBoundary,
         Component: Home,
       },
       {
         path: 'Category/:category',
         loader: categoryLoader,
+        ErrorBoundary: ErrorBoundary,
         Component: Category,
       },
       {
         path: 'Meal/:mealId',
         loader: mealLoader,
+        ErrorBoundary: ErrorBoundary,
         Component: Meal,
       },
       {

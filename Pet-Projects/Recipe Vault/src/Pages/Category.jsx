@@ -9,13 +9,7 @@ export function Category() {
 
   return (
     <>
-      <Suspense
-        fallback={
-          <div className='loader'>
-            <Loader />
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader margin='5rem auto' />}>
         <Await resolve={category}>
           <CategoryComponent />
         </Await>

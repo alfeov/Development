@@ -10,12 +10,15 @@ async function getCategories() {
         throw new Error('HTTP: ' + res.status)
       }
     }
-    const data = await res.json()
-    return data
+    const categories = await res.json()
+    return categories
   } catch (error) {
-    throw new Error('Something went wrong: ' + error.message, {
-      cause: error,
-    })
+    if (error instanceof TypeError && error.message === 'Failed to fetch') {
+      throw new Error('Check Ethernet connection: ' + error.message, {
+        cause: error,
+      })
+    }
+    throw error
   }
 }
 

@@ -10,12 +10,18 @@ async function getCategory(categoryName) {
         throw new Error('HTTP: ' + res.status)
       }
     }
-    const data = await res.json()
-    return data
+    const category = await res.json()
+    if (!category || !category.meals) {
+      throw new Error(`Category ${categoryName} not found (404)`)
+    }
+    return category
   } catch (error) {
-    throw new Error('Something went wrong: ' + error.message, {
-      cause: error,
-    })
+    if (error instanceof TypeError && error.message === 'Failed to fetch') {
+      throw new Error('Check Ethernet connection: ' + error.message, {
+        cause: error,
+      })
+    }
+    throw error
   }
 }
 

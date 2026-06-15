@@ -6,6 +6,7 @@ import { Cards } from '@/Components/Cards/Cards'
 import { SearchBar } from '@/Components/SearchBar/SearchBar'
 
 import styles from './Categories.module.scss'
+import { EmptyMessage } from '../EmptyMessage/EmptyMessage'
 
 export function Categories() {
   const { categories = [] } = useAsyncValue()
@@ -29,7 +30,7 @@ export function Categories() {
     <div className={styles.categories}>
       <SearchBar value={searchValue} onChange={handleSearchChange} />
       {searchedCategories.length === 0 && categories.length && (
-        <p className={styles.emptyMessage}>No results for your search</p>
+        <EmptyMessage message='No results for your search' />
       )}
       <Cards>
         {searchedCategories.map((category) => {

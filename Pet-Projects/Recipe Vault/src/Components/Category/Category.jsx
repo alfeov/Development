@@ -23,7 +23,7 @@ export function Category() {
         Go to categories
       </button>
       <Cards>
-        {category.meals.map((meal) => (
+        {category?.meals?.map((meal) => (
           <Card
             key={meal.idMeal}
             id={meal.idMeal}

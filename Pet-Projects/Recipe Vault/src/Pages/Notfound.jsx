@@ -1,3 +1,5 @@
+import { EmptyMessage } from '@/Components/EmptyMessage/EmptyMessage'
+
 export function Notfound() {
-  return <div>Page not found</div>
+  return <EmptyMessage message='Page not found' />
 }
