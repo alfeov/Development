@@ -1,8 +1,9 @@
+const API_URL = import.meta.env.VITE_API_URL
+const API_KEY = import.meta.env.VITE_API_KEY
+
 async function getMeal(mealId) {
   try {
-    const res = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`,
-    )
+    const res = await fetch(`${API_URL}/${API_KEY}/lookup.php?i=${mealId}`)
     if (!res.ok) {
       if (res.status === 404) {
         throw new Error(`Meal with this id not found (404)`)

@@ -1,7 +1,10 @@
+const API_URL = import.meta.env.VITE_API_URL
+const API_KEY = import.meta.env.VITE_API_KEY
+
 async function getCategory(categoryName) {
   try {
     const res = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`,
+      `${API_URL}/${API_KEY}/filter.php?c=${categoryName}`,
     )
     if (!res.ok) {
       if (res.status === 404) {

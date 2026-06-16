@@ -1,8 +1,9 @@
+const API_URL = import.meta.env.VITE_API_URL
+const API_KEY = import.meta.env.VITE_API_KEY
+
 async function getCategories() {
   try {
-    const res = await fetch(
-      'https://www.themealdb.com/api/json/v1/1/categories.php',
-    )
+    const res = await fetch(`${API_URL}/${API_KEY}/categories.php`)
     if (!res.ok) {
       if (res.status === 404) {
         throw new Error('Page not found (404)')
