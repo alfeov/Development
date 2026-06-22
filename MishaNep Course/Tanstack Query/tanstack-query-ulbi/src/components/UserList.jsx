@@ -1,38 +1,44 @@
 import { useDeleteUserMutation } from '@/hooks/users/usersMutations'
-import {
-  useUsersPaginationQuery,
-  // useUsersSuspenseQuery,
-} from '@/hooks/users/usersQuery'
-import { useState } from 'react'
+import { useUsersInfiniteQuery } from '@/hooks/users/usersQuery'
+// import { useState } from 'react'
 
 const limit = 5
 
 export function UsersList() {
-  const [page, setPage] = useState(1)
-  const { data } = useUsersPaginationQuery({ page, limit })
+  // const [page, setPage] = useState(1)
+  // const { data } = useUsersPaginationQuery({ page, limit })
+  const data = useUsersInfiniteQuery()
 
-  const users = data?.data ?? []
-  const total = data?.total ?? ''
+  console.log(data)
+
+  const users = data?.data?.pages?.[0]?.data ?? []
+  const total = data?.data?.pages?.[0]?.total ?? ''
 
   const totalPages = Math.ceil(total / limit)
 
-  console.log(new Array(totalPages).fill(0).map((_, index) => index + 1))
+  // function changePage(num) {
+  //   setPage(num)
+  // }
 
-  function changePage(num) {
-    setPage(num)
+  const flatUsers = data?.data?.pages.map((page) => page.data).flat()
+  console.log(flatUsers)
+
+  const currentPage = data?.data?.pageParams.length
+  function loadMore() {
+    data.fetchNextPage()
   }
 
   return (
     <>
       <h6>Total Users: {total}</h6>
-      <h6>
+      {/* <h6>
         Pages: {page}/{totalPages}
-      </h6>
-      {users?.map((user) => (
+      </h6> */}
+      {flatUsers?.map((user) => (
         <UserItem key={user.id} {...user} />
       ))}
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <button
+        {/* <button
           onClick={() => {
             changePage(page - 1)
           }}
@@ -47,7 +53,14 @@ export function UsersList() {
           disabled={page >= totalPages}
         >
           Next Page
+        </button> */}
+        <button
+          onClick={loadMore}
+          disabled={data?.isFetchingNextPage || currentPage >= totalPages}
+        >
+          Load More
         </button>
+        {data?.isFetchingNextPage && <span aria-busy={true}>Loading</span>}
       </div>
     </>
   )
