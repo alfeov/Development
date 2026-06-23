@@ -25,12 +25,12 @@ export function useUsersInfiniteQuery() {
     queryKey: ['users'],
     queryFn: ({ pageParam }) => usersApi.getUsers({ pageParam }),
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => {
-      console.log(lastPage, allPages, lastPageParam, allPageParams)
+    getNextPageParam: (lastPage, _, lastPageParam) => {
       if (lastPage.length === 0) {
         return undefined
       }
       return lastPageParam + 1
     },
+    staleTime: Infinity,
   })
 }

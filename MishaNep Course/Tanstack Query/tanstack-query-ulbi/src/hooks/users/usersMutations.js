@@ -52,14 +52,16 @@ export function useCreateUserMutation() {
   })
 }
 
+// Optimistic update
 export function useDeleteUserMutation() {
-  const queryClient = useQueryClient()
   return useMutation({
     mutationFn: usersApi.deleteUser,
-    onSuccess: (data, userId) => {
-      queryClient.setQueryData(['users'], (oldUsers) =>
-        oldUsers.filter((user) => user.id !== userId),
-      )
+    onMutate: (data, { client }) => {
+      console.log(data)
+      console.log('mutation')
+    },
+    onSuccess: (data, userId, _, { client }) => {
+      console.log(data)
       console.log('Users deletion success')
     },
     onError: () => {

@@ -9,8 +9,6 @@ export function UsersList() {
   // const { data } = useUsersPaginationQuery({ page, limit })
   const data = useUsersInfiniteQuery()
 
-  console.log(data)
-
   const users = data?.data?.pages?.[0]?.data ?? []
   const total = data?.data?.pages?.[0]?.total ?? ''
 
@@ -21,7 +19,6 @@ export function UsersList() {
   // }
 
   const flatUsers = data?.data?.pages.map((page) => page.data).flat()
-  console.log(flatUsers)
 
   const currentPage = data?.data?.pageParams.length
   function loadMore() {

@@ -13,5 +13,7 @@ export const usersApi = {
   createUser: (user) => api.post('/users', user).then((res) => res.data),
   updateUser: (user) => api.patch('/users', user).then((res) => res.data),
   deleteUser: (userId) =>
-    api.delete('/users/' + userId).then((res) => res.data),
+    api.delete('/users/' + userId).then((res) => {
+      console.log(res)
+    }),
 }
