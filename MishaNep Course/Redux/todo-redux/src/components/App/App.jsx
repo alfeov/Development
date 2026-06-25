@@ -1,19 +1,27 @@
-import store from '@/store'
-import '@/styles/main.scss'
 import { Provider } from 'react-redux'
-import NewTodo from '@/components/NewTodo'
-import TodoList from '@/components/TodoList'
-import { Filters } from '@/components/Filters/Filters'
+import { createBrowserRouter, RouterProvider } from 'react-router'
+import store from '@/store'
+import { TodoPage } from '@/pages/TodoPage'
+import '@/styles/main.scss'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: TodoPage,
+    children: [
+      {
+        path: ':filter',
+        index: true,
+        Component: TodoPage,
+      },
+    ],
+  },
+])
 
 function App() {
   return (
     <Provider store={store}>
-      <div className='App'>
-        <h1>Hello Redux Todo</h1>
-        <NewTodo />
-        <Filters></Filters>
-        <TodoList />
-      </div>
+      <RouterProvider router={router} />
     </Provider>
   )
 }

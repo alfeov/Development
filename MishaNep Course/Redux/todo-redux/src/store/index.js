@@ -5,14 +5,13 @@ import { loadState, saveState } from './local-storage'
 import throttle from 'lodash.throttle'
 
 const preloadedState = loadState()
-console.log(preloadedState)
 
 const store = createStore(rootReducer, preloadedState, devToolsEnhancer())
 
 store.subscribe(
   throttle(() => {
     saveState({
-      todos: store.getState(),
+      todos: store.getState().todos,
     })
   }, 2000),
 )

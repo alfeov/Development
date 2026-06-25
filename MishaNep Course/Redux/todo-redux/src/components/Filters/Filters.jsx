@@ -1,31 +1,35 @@
-import { setFilter } from '@/store/filters/filters-action'
-import { useDispatch } from 'react-redux'
+// import { setFilter } from '@/store/filters/filters-action'
+// import { useDispatch } from 'react-redux'
+import { Link } from 'react-router'
 
-export function Filters() {
-  const dispatch = useDispatch()
+export default function Filters() {
+  // const dispatch = useDispatch()
   return (
     <div>
-      <button
-        onClick={() => {
-          dispatch(setFilter('all'))
-        }}
+      <Link
+        to='all'
+        // onClick={() => {
+        //   dispatch(setFilter('all'))
+        // }}
       >
         all
-      </button>
-      <button
-        onClick={() => {
-          dispatch(setFilter('active'))
-        }}
+      </Link>
+      <Link
+        to='active'
+        // onClick={() => {
+        //   dispatch(setFilter('active'))
+        // }}
       >
         active
-      </button>
-      <button
-        onClick={() => {
-          dispatch(setFilter('completed'))
-        }}
+      </Link>
+      <Link
+        to='completed'
+        // onClick={() => {
+        //   dispatch(setFilter('completed'))
+        // }}
       >
         completed
-      </button>
+      </Link>
     </div>
   )
 }
