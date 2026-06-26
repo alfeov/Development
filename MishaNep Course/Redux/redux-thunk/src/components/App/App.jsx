@@ -1,3 +1,4 @@
+import { client } from '@/api/api'
 import { loadPosts } from '@/store/posts/posts-actions'
 import { loadUsers } from '@/store/users/users-actions'
 import { useEffect } from 'react'

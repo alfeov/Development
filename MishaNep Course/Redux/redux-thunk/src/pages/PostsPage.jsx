@@ -11,14 +11,16 @@ export function PostsPage() {
 }
 
 function PostList() {
-  const posts = useSelector((state) => state.posts)
+  const { status, posts, error } = useSelector((state) => state.posts)
   return (
     <>
+      {status === 'fetching' && <article aria-busy='true'></article>}
       {posts?.map((post) => (
         <article key={post.id}>
           <Link to={post.id}>{post.title}</Link>
         </article>
       ))}
+      {error && <span>{error}</span>}
     </>
   )
 }

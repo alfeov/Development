@@ -1,6 +1,9 @@
+import { loadCreateUser } from '@/store/users/users-actions'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 
 export function UsersCreateForm() {
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -9,7 +12,7 @@ export function UsersCreateForm() {
   } = useForm({ mode: 'onBlur', defaultValues: { userName: '', userAge: '' } })
 
   const onSubmit = async ({ userName, userAge }) => {
-    console.log(userName, userAge)
+    dispatch(loadCreateUser({ username: userName }))
     reset()
   }
 
@@ -18,6 +21,7 @@ export function UsersCreateForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type='text'
+          placeholder='Username'
           {...register('userName', {
             required: {
               value: true,
@@ -38,6 +42,7 @@ export function UsersCreateForm() {
         )}
         <input
           type='number'
+          placeholder='Age'
           {...register('userAge', {
             required: {
               value: true,

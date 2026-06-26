@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import { rootReducer } from './rootReducer'
-import { thunk } from 'redux-thunk'
+import { withExtraArgument } from 'redux-thunk'
+import { api } from '@/api/api'
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk)),
+  composeWithDevTools(applyMiddleware(withExtraArgument(api))),
 )
 
 export default store

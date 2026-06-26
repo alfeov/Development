@@ -1,12 +1,21 @@
-export const addPosts = (posts) => ({
+const addPosts = (posts) => ({
   type: 'ADD_POSTS',
   payload: posts,
 })
 
-const url = 'https://jsonplaceholder.typicode.com/posts'
+const setPostsFetching = {
+  type: 'SET_POST_FETCHING',
+}
 
-export const loadPosts = () => (dispatch) => {
-  fetch(url)
-    .then((res) => res.json())
+const setPostsError = (error) => ({
+  type: 'SET_POST_ERROR',
+  payload: error,
+})
+
+export const loadPosts = () => (dispatch, _, api) => {
+  dispatch(setPostsFetching)
+  api
+    .get('/posts')
     .then((data) => dispatch(addPosts(data)))
+    .catch((error) => dispatch(setPostsError(error)))
 }
