@@ -22,6 +22,7 @@ export default defineConfig([
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       eqeqeq: 'warn',
       'no-else-return': 'warn',
+      'react-refresh/only-export-components': 'warn',
     },
   },
 ])
