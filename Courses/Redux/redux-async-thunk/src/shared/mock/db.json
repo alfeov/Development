@@ -1,0 +1,15 @@
+{
+  "todos": [
+    {
+      "title": "asdf",
+      "completed": true,
+      "id": "22F6NdKNZIY"
+    },
+    {
+      "title": "new todo",
+      "completed": false,
+      "id": "v6WgcvAclF8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
