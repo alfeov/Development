@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "title": "new todo",
+      "key": "hello",
+      "completed": true,
+      "id": "4Qa5faVRww8"
+    },
+    {
+      "title": "new todo 1",
+      "key": "hello",
+      "completed": true,
+      "id": "yHdW5bHgazo"
+    },
+    {
+      "title": "new todo 3",
+      "key": "hello",
+      "completed": true,
+      "id": "b8V5Zg2b6nc"
+    },
+    {
+      "title": "new todo",
+      "key": "hello",
+      "completed": false,
+      "id": "o4wAc8yWdV4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

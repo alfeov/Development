@@ -10,9 +10,10 @@ import { useFetchTodos } from '../useFetchTodos'
 
 const TodoList = () => {
   useFetchTodos()
-  const activeFilter = useSelector(selectActiveFilter)
-  const todos = useSelector(todosSelectors.selectAll)
-  const visibleTodos = selectVisibleTodos(todos, activeFilter)
+  // const activeFilter = useSelector(selectActiveFilter)
+  // const todos = useSelector(todosSelectors.selectAll)
+  // const visibleTodos = selectVisibleTodos(todos, activeFilter)
+  const visibleTodos = useSelector(selectVisibleTodos)
 
   const dispatch = useDispatch()
   const { status, error } = useSelector((state) => state.todos)
