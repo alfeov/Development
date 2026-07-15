@@ -1,16 +1,16 @@
 import {
   useGetInfiniteTodosInfiniteQuery,
-  useGetTodosQuery,
   useRemoveTodoMutation,
   useUpdateTodoMutation,
 } from '@/app/providers/store/todosApi'
 import { useSelector } from 'react-redux'
 import { selectVisibleTodos } from '../todosSelectors'
 import { selectActiveFilter } from '@/features/Filters/filtersSlice'
+import { useRef } from 'react'
 
 const TodoList = () => {
-  // const { data: todos, isLoading, isError, error } = useGetTodosQuery(1)
   const activeFilter = useSelector(selectActiveFilter)
+  const listRef = useRef(null)
 
   const {
     data: todos,
@@ -19,10 +19,7 @@ const TodoList = () => {
     isLoading,
     isError,
     error,
-  } = useGetInfiniteTodosInfiniteQuery(true, {
-    // ? hasNextPage doesn't work with selectFromResult...
-    // selectFromResult: ({ data }) => ({ todos: data?.pages.flat() ?? [] }),
-  })
+  } = useGetInfiniteTodosInfiniteQuery(true)
 
   console.log(hasNextPage)
 
@@ -33,7 +30,14 @@ const TodoList = () => {
 
   return (
     <>
-      <ul>
+      <button
+        onClick={() => {
+          if (listRef.current) listRef.current.scrollIntoView({ block: 'end' })
+        }}
+      >
+        Show end of list
+      </button>
+      <ul ref={listRef}>
         {visibleTodos?.map((todo) => (
           <li key={todo.id}>
             <input
