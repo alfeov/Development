@@ -46,3 +46,5 @@ function upGrade(user: { level: Grades }) {
     user.level = Grades.Senior
   }
 }
+
+upGrade(developer)

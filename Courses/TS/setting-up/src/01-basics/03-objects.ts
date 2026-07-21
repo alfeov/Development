@@ -17,3 +17,8 @@ const car: Car = {
 car.go = true
 
 car.isNew
+
+const obj1: object = {}
+// ! const obj2: object = 1
+const obj3: {} = 1 // ! still works
+const obj4: Object = 1 // ! still works
