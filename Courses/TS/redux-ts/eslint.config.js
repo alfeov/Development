@@ -33,9 +33,9 @@ export default defineConfig([
         'warn',
         {
           groups: [
-            ['^react', '^\\w', '^@hookform', '^@radix-ui'], // 1. Framework
+            ['^react', 'redux', '^\\w', '^@hookform', '^@radix-ui'], // 1. Framework
             ['^@?\\w'], // 2. External packages
-            ['^@/app', '^@/widgets', '^@/features', '^@/entities', '^@/shared'], // 3. FSD
+            ['^@/app', '^@/widgets', '^@/features', '^@/entities', '^@/shared'], // 3. Internal aliases
             ['^\\.'], // 4. Relative imports
             ['css$'], // 5. style imports
           ],
