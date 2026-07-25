@@ -33,11 +33,10 @@ export default defineConfig([
         'warn',
         {
           groups: [
-            ['^react', '^\\w', '^@hookform', '^@radix-ui'], // 1. Framework
-            ['^@?\\w'], // 2. External packages
-            ['^@/app', '^@/widgets', '^@/features', '^@/entities', '^@/shared'], // 3. FSD
-            ['^\\.'], // 4. Relative imports
-            ['css$'], // 5. style imports
+            ['react', '^@?\\w'], // 1. Frameworks
+            ['^@\/'], // 2. FSD
+            ['^\\.'], // 3. Relative imports
+            ['css$'], // 4. style imports
           ],
         },
       ],

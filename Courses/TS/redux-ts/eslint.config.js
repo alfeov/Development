@@ -19,28 +19,12 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
-    plugins: {
-      'simple-import-sort': simpleImportSort,
-    },
     rules: {
       '@typescript-eslint/no-unused-vars': 'warn',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       eqeqeq: 'warn',
       'no-else-return': 'warn',
       'react-refresh/only-export-components': 'warn',
-      'simple-import-sort/exports': 'warn',
-      'simple-import-sort/imports': [
-        'warn',
-        {
-          groups: [
-            ['^react', 'redux', '^\\w', '^@hookform', '^@radix-ui'], // 1. Framework
-            ['^@?\\w'], // 2. External packages
-            ['^@/app', '^@/widgets', '^@/features', '^@/entities', '^@/shared'], // 3. Internal aliases
-            ['^\\.'], // 4. Relative imports
-            ['css$'], // 5. style imports
-          ],
-        },
-      ],
     },
   },
 ])

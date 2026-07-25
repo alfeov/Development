@@ -35,7 +35,7 @@ export default defineConfig([
           groups: [
             ['^react', '^\\w', '^@hookform', '^@radix-ui'], // 1. Framework
             ['^@?\\w'], // 2. External packages
-            ['^@/app', '^@/features', '^@/entities', '^@/shared'], // 3. Internal aliases
+            ['^@\/'], // 3. Internal aliases
             ['^\\.'], // 4. Relative imports
             ['^.+\\.?(css)$'], // 5. style imports
           ],
