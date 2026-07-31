@@ -1,12 +1,9 @@
-import { PasswordAuth } from '@/widgets/PasswordAuth/PasswordAuth'
 import './styles/base/index.css'
+import { RouterProvider } from 'react-router'
+import { router } from './providers/router'
 
 function App() {
-  return (
-    <>
-      <PasswordAuth />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
