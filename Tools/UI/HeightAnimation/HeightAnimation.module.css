@@ -1,0 +1,4 @@
+.animation {
+  transition-duration: var(--transition-duration);
+  transition-property: height;
+}

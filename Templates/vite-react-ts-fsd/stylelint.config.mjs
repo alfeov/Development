@@ -11,5 +11,6 @@ export default {
       true,
       { ignorePseudoClasses: ['global'] },
     ],
+    'rule-empty-line-before': ['always', { except: ['inside-block'] }],
   },
 }
