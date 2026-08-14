@@ -1,5 +1,6 @@
 import { authConfig } from '@/config/auth'
 import { getServerSession } from 'next-auth'
+import Image from 'next/image'
 
 export default async function ProfilePage() {
   const session = await getServerSession(authConfig)
@@ -10,7 +11,13 @@ export default async function ProfilePage() {
         <>
           <h1>Profile of {session.user?.name}</h1>
           {session.user?.image && (
-            <img src={session.user.image} alt='User image' />
+            <Image
+              src={session.user.image}
+              alt='User image'
+              width={100}
+              height={100}
+              quality={100}
+            />
           )}
         </>
       ) : (

@@ -1,18 +1,21 @@
-import Link from 'next/link'
+import { Metadata } from 'next'
 
-export default function AboutLayout({ children }: LayoutProps<'/about'>) {
+export const metadata: Metadata = {
+  title: 'About | Next App ',
+}
+
+export default function AboutLayout({
+  children,
+  contacts,
+  team,
+}: LayoutProps<'/about'>) {
   return (
     <div>
-      <h1>About us</h1>
-      <ul>
-        <li>
-          <Link href='/about/contacts'>View contacts</Link>
-        </li>
-        <li>
-          <Link href='/about/team'>View our team</Link>
-        </li>
-      </ul>
       {children}
+      <br />
+      <h1>Parallel pages:</h1>
+      {contacts}
+      {team}
     </div>
   )
 }

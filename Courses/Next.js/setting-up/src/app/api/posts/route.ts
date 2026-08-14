@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { posts } from '@/app/api/posts/posts'
 import { wait } from '@/utils/wait'
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
-  let result = posts
-
-  await wait(3000)
   const query = searchParams.get('q')?.toLowerCase()
+
+  const response = await fetch('http://localhost:3001/posts')
+  let data: Post[] = await response.json()
+
   if (query) {
-    result = result.filter((post) => post.title.toLowerCase().includes(query))
+    data = data.filter((post) => post.title.toLowerCase().includes(query))
   }
 
-  return NextResponse.json(result)
+  return NextResponse.json(data)
 }
 
 export async function POST(req: NextRequest) {
