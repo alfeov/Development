@@ -1,4 +1,4 @@
-import { authConfig } from '@/config/auth'
+import { authConfig } from '@/shared/config/auth'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 

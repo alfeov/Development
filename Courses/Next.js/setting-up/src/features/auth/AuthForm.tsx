@@ -1,24 +1,6 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
-import { redirect } from 'next/navigation'
-
-async function signInAction(formData: FormData) {
-  const { login, password } = Object.fromEntries(formData)
-
-  const res = await signIn('credentials', {
-    login,
-    password,
-    redirect: false,
-  })
-
-  if (res?.ok) {
-    redirect('/profile')
-    return
-  }
-
-  console.log(res)
-}
+import { signInAction } from './api/actions'
 
 export function AuthForm() {
   return (

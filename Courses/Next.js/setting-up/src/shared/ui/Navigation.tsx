@@ -25,6 +25,7 @@ export const Navigation = ({ navItems }: NavigationProps) => {
         <Link
           key={navItem.label}
           href={navItem.path}
+
           className={currentPath === navItem.path ? activeClass : ''}
         >
           {navItem.label}

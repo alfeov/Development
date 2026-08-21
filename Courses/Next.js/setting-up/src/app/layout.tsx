@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 
-import { TheFooter } from '@/app/_components/TheFooter'
-import { TheHeader } from '@/app/_components/TheHeader'
+import { TheFooter } from '@/shared/ui/TheFooter'
+import { TheHeader } from '@/shared/ui/TheHeader'
 
-import './globals.css'
 import { AuthProvider } from './_providers/AuthProvider'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
