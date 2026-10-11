@@ -1,1 +1,0 @@
-export { SpinnerEmpty } from './SpinerEmpty'

@@ -1,0 +1,13 @@
+{
+  "name": "codewars",
+  "version": "1.0.0",
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.1"
+  }
+}

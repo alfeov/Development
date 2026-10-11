@@ -1,0 +1,117 @@
+import { createContext, use, useState } from 'react'
+
+import styles from './Image.module.css'
+
+interface Value {
+  isLoading: boolean
+  isError: boolean
+  handleLoad: () => void
+}
+const ImageContext = createContext<Value | null>(null)
+
+interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  src: string
+  alt: string
+}
+export function Image({
+  src,
+  alt,
+  children,
+  className = '',
+  style = {},
+  ...props
+}: ImageProps) {
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
+
+  const handleError = () => {
+    setIsError(true)
+  }
+
+  const handleLoad = () => {
+    setIsLoading(false)
+  }
+
+  return (
+    <>
+      {!isError && (
+        <img
+          src={src || 'errorSrc'} // to perform empty string
+          alt={alt}
+          loading='lazy'
+          onError={handleError}
+          onLoad={handleLoad}
+          className={`${styles.img} ${className}`}
+          style={{
+            width: isLoading ? '0' : '100%',
+            opacity: isLoading ? '0' : '1',
+            ...style,
+          }}
+          {...props}
+        />
+      )}
+      <ImageContext value={{ isLoading, isError, handleLoad }}>
+        {children}
+      </ImageContext>
+    </>
+  )
+}
+
+interface ImageWrapperProps {
+  children: React.ReactNode
+  aspectRatio?: string
+  className?: string
+  style?: React.CSSProperties
+}
+export function ImageWrapper({
+  aspectRatio = '3/2',
+  className = '',
+  style = {},
+  children,
+}: ImageWrapperProps) {
+  return (
+    <div
+      className={`${styles.imgWrapper} ${className}`}
+      style={{ aspectRatio: aspectRatio, ...style }}
+    >
+      {children}
+    </div>
+  )
+}
+
+export function FallbackImage({
+  src,
+  alt,
+  className = '',
+  ...props
+}: ImageProps) {
+  const imageContext = use(ImageContext)
+  return (
+    imageContext?.isError && (
+      <img
+        src={src}
+        alt={alt}
+        className={`${styles.img} ${className}`}
+        onLoad={imageContext?.handleLoad}
+        {...props}
+      />
+    )
+  )
+}
+
+export function FallbackText({ children }: { children: React.ReactNode }) {
+  const imageContext = use(ImageContext)
+
+  return imageContext?.isError && <p className={styles.noImgText}>{children}</p>
+}
+
+export function Loader({ children }: { children: React.ReactNode }) {
+  const imageContext = use(ImageContext)
+  return (
+    imageContext?.isLoading && (
+      <div className='w-full h-full flex justify-center items-center'>
+        {children}
+      </div>
+    )
+  )
+}
